@@ -745,25 +745,30 @@
 <!-- Scroll to top button -->
 <button id="scrollTopBtn" title="Powrót do góry">&#8679;</button>
 
-<!-- Przycisk prank "NIE KLIKAĆ" -->
-<button id="prankBtn" title="NIE KLIKAĆ">NIE KLIKAĆ</button>
+<!-- Przyciski -->
+<button id="dont-click">🚫 NIE KLIKAĆ</button>
 
-<!-- Modal prank -->
-<div id="prankModal">
-  <form id="prankForm">
-    <h3>Atak DDoS</h3>
-    <label>
-      IP celu:
-      <input type="text" name="targetIP" placeholder="np. 192.168.1.1" required />
-    </label>
-    <label>
-      Ilość pakietów:
-      <input type="number" name="packets" min="1" max="10000" placeholder="np. 1000" required />
-    </label>
-    <button type="submit">ATTAK</button>
-    <button type="button" id="prankCloseBtn">ANULUJ</button>
-  </form>
+<form id="ddos-form" style="display: none;">
+  <input type="text" placeholder="Wpisz cel ataku..." required />
+  <button type="submit">Rozpocznij</button>
+</form>
+
+<div id="rickroll" style="display: none; text-align: center; margin-top: 20px;">
+  <img src="rick.gif" alt="Rickroll" style="max-width: 100%; height: auto;" />
 </div>
+
+<script>
+  document.getElementById("dont-click").addEventListener("click", function () {
+    document.getElementById("ddos-form").style.display = "block";
+  });
+
+  document.getElementById("ddos-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    document.getElementById("ddos-form").style.display = "none";
+    document.getElementById("rickroll").style.display = "block";
+  });
+</script>
+
 
 <!-- Live chat -->
 <button id="chatBtn">Chat</button>
