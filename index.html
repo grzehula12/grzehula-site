@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -354,8 +355,6 @@
     <audio controls id="audioPlayer" preload="metadata">
       Twoja przeglądarka nie wspiera elementu audio.
     </audio>
-    <canvas id="audioVisualizer" width="400" height="60" style="display: block; margin: 10px auto; background: #001a26; border-radius: 5px;"></canvas>
-
   </div>
 
   <script>
@@ -390,56 +389,6 @@
     });
 
     loadTrack(0);
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-const audioElement = document.getElementById('audioPlayer');
-const canvas = document.getElementById('audioVisualizer');
-const canvasCtx = canvas.getContext('2d');
-
-let source;
-let analyser = audioCtx.createAnalyser();
-analyser.fftSize = 64;
-const bufferLength = analyser.frequencyBinCount;
-const dataArray = new Uint8Array(bufferLength);
-
-function setupAudio() {
-  if (source) {
-    source.disconnect();
-  }
-  source = audioCtx.createMediaElementSource(audioElement);
-  source.connect(analyser);
-  analyser.connect(audioCtx.destination);
-}
-
-function draw() {
-  requestAnimationFrame(draw);
-
-  analyser.getByteFrequencyData(dataArray);
-
-  canvasCtx.fillStyle = '#001a26';
-  canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
-
-  const barWidth = (canvas.width / bufferLength) * 1.5;
-  let x = 0;
-
-  for(let i = 0; i < bufferLength; i++) {
-    const barHeight = dataArray[i] / 2;
-    const y = canvas.height - barHeight;
-
-    canvasCtx.fillStyle = '#00eaff';
-    canvasCtx.fillRect(x, y, barWidth, barHeight);
-
-    x += barWidth + 2;
-  }
-}
-
-audioElement.addEventListener('play', () => {
-  if (audioCtx.state === 'suspended') {
-    audioCtx.resume();
-  }
-  setupAudio();
-  draw();
-});
-
   </script>
 </section>
 
