@@ -396,25 +396,14 @@
   }
 
   /* Przycisk prank "NIE KLIKAĆ" */
-  #prankBtn {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background: #ff3b3b;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    z-index: 2000;
-    user-select: none;
-    box-shadow: 0 2px 10px #a00;
-    transition: background-color 0.3s ease;
-  }
-  #prankBtn:hover {
-    background: #cc2b2b;
-  }
+<button id="doosBtn" style="padding: 20px 40px; font-size: 20px; background-color: #ff3366; color: white; border: none; border-radius: 12px; cursor: pointer; transition: transform 0.2s;">
+  DoOS 🔥
+</button>
+
+<div id="rickContainer" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: black; z-index: 9999; justify-content: center; align-items: center;">
+  <img src="rick.gif" alt="Rick Roll" style="max-width: 100%; max-height: 100%; object-fit: cover;" />
+</div>
+
 
   /* Modal prank */
   #prankModal {
@@ -949,6 +938,13 @@
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }, 800);
   }
+  <script>
+  document.getElementById("doosBtn").addEventListener("click", function() {
+    const rick = document.getElementById("rickContainer");
+    rick.style.display = "flex";
+  });
+</script>
+
 </script>
 
 </body>
