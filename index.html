@@ -1,615 +1,488 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Grzehula Store - O nas i śmieszne rzeczy</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-
-  <style>
-    /* Reset i podstawy */
-    * {
-      box-sizing: border-box;
-      margin: 0; padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    body {
-      background: #121212;
-      color: #ccc;
-      line-height: 1.6;
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-      min-height: 100vh;
-    }
-    a {
-      color: #1ed760;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    a:hover, a:focus {
-      color: #1db954;
-      text-decoration: underline;
-      outline: none;
-    }
-
-    /* GŁÓWNY KONTENER */
-    #container {
-      max-width: 1100px;
-      margin: 0 auto 100px;
-      padding: 0 20px;
-    }
-
-    /* NAGŁÓWEK */
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Grzehula Store – O nas i śmieszne rzeczy</title>
+<style>
+  /* Reset */
+  * {
+    box-sizing: border-box;
+    margin: 0; padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  body {
+    background: #0a0a1a;
+    color: #cde9ff;
+    line-height: 1.5;
+    min-height: 100vh;
+    scroll-behavior: smooth;
+  }
+  a {
+    color: #00e5ff;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  a:hover, a:focus {
+    color: #00b8d9;
+    text-decoration: underline;
+    outline: none;
+  }
+  #container {
+    max-width: 900px;
+    margin: 0 auto 80px;
+    padding: 0 15px;
+  }
+  header {
+    background: linear-gradient(90deg, #00e5ff, #006bb3);
+    color: #0a0a1a;
+    padding: 80px 20px 60px;
+    font-size: 3.8rem;
+    font-weight: 900;
+    text-align: center;
+    letter-spacing: 3px;
+    text-shadow: 0 0 15px #00e5ffaa;
+    border-radius: 0 0 50% 50% / 20% 20% 80% 80%;
+    margin-bottom: 40px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 6px 30px #00e5ffaa;
+  }
+  nav {
+    background: #111133;
+    position: sticky;
+    top: 150px;
+    z-index: 9999;
+    box-shadow: 0 3px 20px #007acccc;
+    border-radius: 18px;
+    margin-bottom: 50px;
+  }
+  nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 12px 0;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  nav ul li a {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #a4e9ff;
+    padding: 8px 20px;
+    border-radius: 12px;
+    box-shadow: inset 0 0 0 2px #00e5ff;
+    display: inline-block;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  }
+  nav ul li a:hover, nav ul li a:focus {
+    background-color: #00e5ff;
+    color: #0a0a1a;
+    box-shadow: 0 0 15px #00e5ff;
+    outline: none;
+  }
+  section {
+    background: #111133;
+    margin-bottom: 60px;
+    padding: 40px 30px;
+    border-radius: 18px;
+    box-shadow: 0 8px 24px #005eaa80;
+    scroll-margin-top: 120px;
+  }
+  section h2 {
+    font-size: 2.8rem;
+    margin-bottom: 25px;
+    color: #00e5ff;
+    border-bottom: 3px solid #00a8d4;
+    padding-bottom: 8px;
+    user-select: none;
+    text-shadow: 0 0 12px #00e5ffaa;
+  }
+  section p, section li {
+    font-size: 1.1rem;
+    color: #b7e4ffcc;
+    max-width: 860px;
+  }
+  .fun-stories ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  .fun-stories li {
+    position: relative;
+    padding-left: 36px;
+    margin-bottom: 18px;
+  }
+  .fun-stories li::before {
+    content: "💡";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1.5rem;
+    line-height: 1;
+    user-select: none;
+    animation: pulseEmoji 3s ease-in-out infinite;
+  }
+  @keyframes pulseEmoji {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+  }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+    gap: 25px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .gallery img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px #007accaa;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    user-select: none;
+  }
+  .gallery img:hover {
+    transform: scale(1.07);
+    box-shadow: 0 12px 30px #00e5ffdd;
+  }
+  .faq-list {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .faq-item {
+    margin-bottom: 25px;
+    border-radius: 14px;
+    background: #0e0e2a;
+    box-shadow: 0 7px 20px #005eaa50;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+  }
+  .faq-question {
+    padding: 20px 28px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #00e5ff;
+    position: relative;
+    user-select: none;
+    border-left: 6px solid transparent;
+    transition: background-color 0.3s, color 0.3s, border-left-color 0.3s;
+  }
+  .faq-question:hover {
+    background: #00a8d4;
+    color: #0a0a1a;
+    border-left-color: #0077aa;
+  }
+  .faq-question::after {
+    content: '+';
+    font-weight: 900;
+    font-size: 2rem;
+    position: absolute;
+    right: 28px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #00e5ff;
+    transition: transform 0.3s;
+  }
+  .faq-item.open .faq-question::after {
+    content: '−';
+    transform: translateY(-50%) rotate(180deg);
+    color: #0077aa;
+  }
+  .faq-answer {
+    max-height: 0;
+    padding: 0 28px;
+    color: #aad8ffcc;
+    font-size: 1rem;
+    line-height: 1.5;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.5s ease;
+    background: #0a0a1a;
+    border-top: 1px solid #0077aa;
+    user-select: text;
+  }
+  .faq-item.open .faq-answer {
+    padding: 18px 28px;
+    max-height: 400px;
+  }
+  form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #111144;
+    padding: 40px 30px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px #005eaa80;
+  }
+  form h3 {
+    color: #00e5ff;
+    font-size: 2.2rem;
+    margin-bottom: 35px;
+    letter-spacing: 1px;
+    user-select: none;
+  }
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #aad8ffcc;
+    user-select: none;
+  }
+  input, textarea {
+    width: 100%;
+    padding: 14px 16px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    border: none;
+    font-size: 1rem;
+    background: #0a0a1a;
+    color: #cde9ff;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    resize: vertical;
+    user-select: text;
+  }
+  input:focus, textarea:focus {
+    background-color: #00a8d4;
+    color: #0a0a1a;
+    outline: none;
+    box-shadow: 0 0 15px #00e5ff;
+  }
+  button {
+    background: #00e5ff;
+    color: #0a0a1a;
+    font-weight: 700;
+    font-size: 1.3rem;
+    padding: 14px 38px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 8px 25px #0077aa;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    user-select: none;
+  }
+  button:hover, button:focus {
+    background-color: #0077aa;
+    box-shadow: 0 10px 30px #00e5ff;
+    outline: none;
+  }
+  #form-response {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+    min-height: 24px;
+    user-select: text;
+  }
+  footer {
+    text-align: center;
+    padding: 25px 15px;
+    color: #446688;
+    font-size: 1rem;
+    user-select: none;
+    border-top: 1px solid #002244;
+    margin-top: 60px;
+    letter-spacing: 1px;
+  }
+  #toTopBtn {
+    position: fixed;
+    bottom: 35px;
+    right: 35px;
+    background: #00e5ff;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 50%;
+    box-shadow: 0 0 20px #0077aa;
+    cursor: pointer;
+    font-size: 1.6rem;
+    color: #0a0a1a;
+    user-select: none;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    z-index: 10000;
+    display: none;
+  }
+  #toTopBtn:hover {
+    background-color: #0077aa;
+    box-shadow: 0 0 35px #00e5ff;
+    outline: none;
+  }
+  @media (max-width: 600px) {
     header {
-      background: linear-gradient(90deg, #1db954, #1ed760);
-      color: #121212;
-      padding: 120px 20px 80px;
-      font-size: 4.5rem;
-      font-weight: 900;
-      text-align: center;
-      letter-spacing: 3px;
-      user-select: none;
-      text-shadow: 0 0 20px rgba(29,185,84,0.6);
-      border-radius: 0 0 50% 50% / 20% 20% 80% 80%;
-      margin-bottom: 60px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 6px 30px rgba(29,185,84,0.7);
-    }
-
-    /* NAV */
-    nav {
-      background: #222;
-      position: sticky;
-      top: 170px;
-      z-index: 9999;
-      box-shadow: 0 3px 15px rgba(0,0,0,0.8);
-      border-radius: 20px;
-      margin-bottom: 70px;
+      font-size: 2.8rem;
+      padding: 60px 15px 40px;
+      border-radius: 0 0 60% 60% / 30% 30% 70% 70%;
     }
     nav ul {
-      display: flex;
-      justify-content: center;
-      list-style: none;
-      padding: 15px 0;
-      gap: 3rem;
-      user-select: none;
-      flex-wrap: wrap;
+      gap: 1rem;
     }
     nav ul li a {
-      font-weight: 700;
-      font-size: 1.3rem;
-      color: #eee;
-      padding: 10px 24px;
-      border-radius: 12px;
-      display: inline-block;
-      transition: background-color 0.4s, color 0.4s;
-      box-shadow: inset 0 0 0 2px #1db954;
-    }
-    nav ul li a:hover, nav ul li a:focus {
-      background-color: #1db954;
-      color: #121212;
-      outline: none;
-      box-shadow: 0 0 15px #1db954;
-    }
-
-    /* SEKCJE */
-    section {
-      background: #1e1e1e;
-      margin-bottom: 80px;
-      padding: 50px 40px;
-      border-radius: 18px;
-      box-shadow: 0 8px 24px rgba(29,185,84,0.3);
-      scroll-margin-top: 120px;
-      user-select: text;
-      position: relative;
-    }
-    section h2 {
-      font-size: 3rem;
-      margin-bottom: 40px;
-      color: #1db954;
-      border-bottom: 4px solid #1db954;
-      padding-bottom: 12px;
-      user-select: none;
-      letter-spacing: 1.3px;
-      text-shadow: 0 0 12px #1db954;
-    }
-    section p {
-      font-size: 1.15rem;
-      margin-bottom: 20px;
-      color: #bbb;
-      max-width: 900px;
-    }
-    section strong {
-      color: #1ed760;
-    }
-
-    /* O nas - większy tekst */
-    #onas p {
-      font-size: 1.3rem;
-      max-width: 1000px;
-      line-height: 1.8;
-    }
-
-    /* Zabawne historie - listy z ikonami */
-    .fun-stories ul {
-      list-style: none;
-      max-width: 900px;
-      padding-left: 0;
-    }
-    .fun-stories li {
-      position: relative;
-      padding-left: 45px;
-      margin-bottom: 22px;
-      font-size: 1.15rem;
-      color: #ddd;
-    }
-    .fun-stories li::before {
-      content: "🤖";
-      position: absolute;
-      left: 0;
-      top: 0;
-      font-size: 1.8rem;
-      line-height: 1;
-      user-select: none;
-      transition: transform 0.3s ease;
-    }
-    .fun-stories li:hover::before {
-      transform: rotate(15deg) scale(1.2);
-    }
-
-    /* Galeria memów */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-      gap: 30px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .gallery img {
-      width: 100%;
-      border-radius: 15px;
-      box-shadow: 0 10px 25px rgba(29,185,84,0.5);
-      transition: transform 0.35s ease;
-      cursor: pointer;
-      user-select: none;
-    }
-    .gallery img:hover {
-      transform: scale(1.08);
-      box-shadow: 0 15px 40px rgba(29,185,84,0.8);
-    }
-
-    /* FAQ - na luzie */
-    .faq-list {
-      max-width: 900px;
-      margin: 0 auto;
-      user-select: none;
-    }
-    .faq-item {
-      margin-bottom: 30px;
-      border-radius: 14px;
-      background: #222;
-      box-shadow: 0 7px 20px rgba(29,185,84,0.2);
-      overflow: hidden;
-      transition: background-color 0.4s ease;
-    }
-    .faq-question {
-      padding: 22px 30px;
-      cursor: pointer;
-      font-weight: 800;
-      font-size: 1.4rem;
-      color: #1db954;
-      position: relative;
-      user-select: none;
-      transition: background-color 0.4s, color 0.4s;
-      border-left: 6px solid transparent;
-    }
-    .faq-question:hover {
-      background: #1db954;
-      color: #121212;
-      border-left: 6px solid #17a746;
-    }
-    .faq-question::after {
-      content: '+';
-      font-weight: 900;
-      font-size: 2.4rem;
-      position: absolute;
-      right: 30px;
-      top: 50%;
-      transform: translateY(-50%);
-      transition: transform 0.3s;
-      color: #1db954;
-    }
-    .faq-item.open .faq-question::after {
-      content: '−';
-      transform: translateY(-50%) rotate(180deg);
-      color: #17a746;
-    }
-    .faq-answer {
-      max-height: 0;
-      padding: 0 30px;
-      color: #ccc;
-      font-size: 1.15rem;
-      line-height: 1.6;
-      overflow: hidden;
-      transition: max-height 0.6s ease, padding 0.6s ease;
-      background: #111;
-      border-top: 1px solid #1db954;
-      user-select: text;
-    }
-    .faq-item.open .faq-answer {
-      padding: 20px 30px;
-      max-height: 1000px;
-    }
-
-    /* Kontakt - formularz */
-    form {
-      max-width: 650px;
-      margin: 0 auto;
-      background: #222;
-      padding: 45px 40px;
-      border-radius: 18px;
-      box-shadow: 0 10px 30px rgba(29,185,84,0.35);
-      user-select: none;
-    }
-    form h3 {
-      color: #1db954;
-      font-size: 2.5rem;
-      margin-bottom: 40px;
-      user-select: none;
-      letter-spacing: 1.2px;
-      text-shadow: 0 0 10px #1db954;
-    }
-    form label {
-      display: block;
-      margin-bottom: 12px;
-      font-weight: 700;
-      color: #ccc;
-      user-select: none;
-    }
-    form input, form textarea {
-      width: 100%;
-      padding: 16px 18px;
-      margin-bottom: 30px;
-      border-radius: 12px;
-      border: none;
-      font-size: 1.15rem;
-      background: #121212;
-      color: #eee;
-      transition: background-color 0.3s, box-shadow 0.3s;
-      resize: vertical;
-      user-select: text;
-    }
-    form input:focus, form textarea:focus {
-      background-color: #1db954;
-      color: #121212;
-      outline: none;
-      box-shadow: 0 0 15px #1db954;
-    }
-    form button {
-      background: #1db954;
-      color: #121212;
-      font-weight: 700;
-      font-size: 1.4rem;
-      padding: 16px 40px;
-      border: none;
-      border-radius: 15px;
-      cursor: pointer;
-      box-shadow: 0 8px 20px rgba(29,185,84,0.8);
-      transition: background-color 0.3s, box-shadow 0.3s;
-      user-select: none;
-    }
-    form button:hover, form button:focus {
-      background-color: #17a746;
-      box-shadow: 0 10px 30px rgba(23,167,70,0.9);
-      outline: none;
-    }
-
-    #form-response {
-      margin-top: 20px;
-      text-align: center;
-      font-size: 1.2rem;
-      font-weight: 700;
-      min-height: 24px;
-      user-select: text;
-    }
-
-    /* STOPKA */
-    footer {
-      text-align: center;
-      padding: 28px 15px;
-      color: #555;
       font-size: 1rem;
-      user-select: none;
-      border-top: 1px solid #333;
-      margin-top: 80px;
-      letter-spacing: 1px;
+      padding: 6px 12px;
     }
-
-    /* RESPONSYWNOŚĆ */
-    @media (max-width: 1000px) {
-      nav ul {
-        gap: 1.8rem;
-      }
-      section {
-        padding: 40px 25px;
-        margin-bottom: 60px;
-      }
-      form {
-        padding: 35px 25px;
-      }
+    section {
+      padding: 30px 20px;
+      margin-bottom: 40px;
     }
-    @media (max-width: 600px) {
-      header {
-        font-size: 3.2rem;
-        padding: 90px 15px 60px;
-        border-radius: 0 0 60% 60% / 30% 30% 70% 70%;
-      }
-      nav ul {
-        gap: 1rem;
-      }
-      nav ul li a {
-        font-size: 1.1rem;
-        padding: 8px 16px;
-      }
-      section {
-        padding: 35px 20px;
-        margin-bottom: 50px;
-      }
-      form {
-        padding: 30px 20px;
-      }
+    form {
+      padding: 30px 20px;
     }
-
-    /* Animacje - lekki efekt pulsowania nagłówka */
-    @keyframes pulseGlow {
-      0%, 100% {
-        text-shadow: 0 0 15px #1db954, 0 0 30px #1ed760;
-      }
-      50% {
-        text-shadow: 0 0 40px #1db954, 0 0 60px #1ed760;
-      }
-    }
-    header {
-      animation: pulseGlow 3.5s ease-in-out infinite;
-    }
-
-    /* Animacja w tle śmiesznych historii - pulsujące emoji */
-    .fun-stories li::before {
-      animation: pulseEmoji 2.8s ease-in-out infinite;
-    }
-    @keyframes pulseEmoji {
-      0%, 100% { transform: rotate(0deg) scale(1); }
-      50% { transform: rotate(10deg) scale(1.15); }
-    }
-
-    /* Scroll do góry - mega zielony przycisk */
-    #toTopBtn {
-      position: fixed;
-      bottom: 35px;
-      right: 35px;
-      background: #1db954;
-      border: none;
-      padding: 15px 22px;
-      border-radius: 50%;
-      box-shadow: 0 0 20px #1ed760;
-      cursor: pointer;
-      font-size: 1.6rem;
-      color: #121212;
-      user-select: none;
-      transition: background-color 0.3s, box-shadow 0.3s;
-      z-index: 10000;
-      display: none;
-    }
-    #toTopBtn:hover {
-      background-color: #17a746;
-      box-shadow: 0 0 35px #1ed760;
-      outline: none;
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
-  <header>
-    Witaj na stronie Grzehula Store!<br>
-    O nas i śmieszne rzeczy 🌿🤖
-  </header>
+<header>Grzehula Store<br>O nas i śmieszne rzeczy 🌐🔵</header>
 
-  <nav aria-label="Główne menu nawigacyjne">
-    <ul role="menubar">
-      <li role="none"><a role="menuitem" href="#onas" tabindex="0">O nas</a></li>
-      <li role="none"><a role="menuitem" href="#fun" tabindex="0">Zabawne historie</a></li>
-      <li role="none"><a role="menuitem" href="#gallery" tabindex="0">Galeria memów</a></li>
-      <li role="none"><a role="menuitem" href="#faq" tabindex="0">FAQ</a></li>
-      <li role="none"><a role="menuitem" href="#kontakt" tabindex="0">Kontakt</a></li>
+<nav aria-label="Główne menu nawigacyjne">
+  <ul role="menubar">
+    <li role="none"><a role="menuitem" href="#onas" tabindex="0">O nas</a></li>
+    <li role="none"><a role="menuitem" href="#fun" tabindex="0">Zabawne historie</a></li>
+    <li role="none"><a role="menuitem" href="#gallery" tabindex="0">Galeria</a></li>
+    <li role="none"><a role="menuitem" href="#faq" tabindex="0">FAQ</a></li>
+    <li role="none"><a role="menuitem" href="#kontakt" tabindex="0">Kontakt</a></li>
+  </ul>
+</nav>
+
+<div id="container">
+
+  <section id="onas" tabindex="0" aria-labelledby="onas-title" role="region">
+    <h2 id="onas-title">Kim jesteśmy?</h2>
+    <p>Ekipa fanów tech, kodu i dobrej zabawy. Bez lania wody — po prostu robimy to, co kochamy, i lubimy się śmiać.</p>
+  </section>
+
+  <section id="fun" tabindex="0" aria-labelledby="fun-title" role="region" class="fun-stories">
+    <h2 id="fun-title">Zabawne historie</h2>
+    <ul>
+      <li>Arduino zamiast oscyloskopu odtwarzało... Despacito na piezo!</li>
+      <li>Lutowanie ołówkiem skończyło się lekkim pożarem (ups).</li>
+      <li>Lampa rentgenowska nas przeniosła bliżej gwiazd podczas eksperymentu.</li>
+      <li>Kot zyskał status oficjalnego testera kabli — trochę pomaga, trochę psuje.</li>
+      <li>Stara mikrofalówka przemieniła warsztat w dyskotekę. Zielono i głośno!</li>
     </ul>
-  </nav>
+  </section>
 
-  <div id="container">
+  <section id="gallery" tabindex="0" aria-labelledby="gallery-title" role="region">
+    <h2 id="gallery-title">Galeria memów</h2>
+    <div class="gallery" aria-label="Galeria memów">
+      <img src="https://i.imgur.com/Tq4B97g.jpg" alt="Programista i kawa" loading="lazy" />
+      <img src="https://i.imgur.com/TFuN6YA.jpg" alt="Debugowanie" loading="lazy" />
+      <img src="https://i.imgur.com/p7WIEVm.jpg" alt="Elektronik w akcji" loading="lazy" />
+      <img src="https://i.imgur.com/c1ZXy6p.jpg" alt="Kiedy wszystko działa" loading="lazy" />
+      <img src="https://i.imgur.com/UHTqE8d.jpg" alt="Kabel vs kot" loading="lazy" />
+    </div>
+  </section>
 
-    <!-- O nas -->
-    <section id="onas" tabindex="0" aria-labelledby="onas-title" role="region">
-      <h2 id="onas-title">Kim jesteśmy?</h2>
-      <p>
-        Jesteśmy ekipą zapaleńców technologii, kodu i kawy. Lubimy dłubać w elektronice, gubić się w kodzie i po prostu dobrze się bawić.<br>
-        Nasz <strong>zielono-carny styl</strong> to nie tylko estetyka — to sposób na życie, na świeże spojrzenie i trochę luzu.  
-      </p>
-      <p>
-        Mamy sporo śmiesznych historii i pomysłów, które czasem nawet działają. Tutaj znajdziesz trochę tech-humoru, opowieści z naszych nieudanych eksperymentów i kawałków życia majsterkowicza.
-      </p>
-      <p>
-        Jeśli szukasz poważnej korporacyjnej strony — to chyba pomyłka. Tu króluje luz, zieleń i dobra zabawa!
-      </p>
-    </section>
-
-    <!-- Zabawne historie -->
-    <section id="fun" tabindex="0" aria-labelledby="fun-title" role="region" class="fun-stories">
-      <h2 id="fun-title">Zabawne historie i tech-kurioza</h2>
-      <ul>
-        <li>Raz próbowaliśmy zrobić oscyloskop z Arduino... i zamiast sygnału, dostaliśmy piosenkę "Despacito" na piezo. Nie pytajcie jak.</li>
-        <li>Próba lutowania ołówkiem zakończyła się chwilowym zaprószeniem pożaru na biurku. Ogień zgasł, ale ołówek już nie pisał.</li>
-        <li>Podczas montażu ZVS prąd poszedł do kosmosu, a lampa rentgenowska zasugerowała, że jesteśmy bliżej gwiazd niż Ziemi.</li>
-        <li>Ktoś zostawił na stole układ, który zaczął świecić zielonym światłem – okazało się, że to nie magia, tylko zwarcie z 12V.</li>
-        <li>Na jednym z eksperymentów użyliśmy transformatora ze starego mikrofalowego – i nagle kuchnia zamieniła się w dyskotekę. Było zielono, głośno i niebezpiecznie.</li>
-        <li>Kiedyś wpadł nam do warsztatu kot – od tamtej pory wszystkie kable mają w sobie "kocią energię" i czasem przerywają pracę... ale kto by się gniewał na takiego inżyniera?</li>
-      </ul>
-    </section>
-
-    <!-- Galeria memów -->
-    <section id="gallery" tabindex="0" aria-labelledby="gallery-title" role="region">
-      <h2 id="gallery-title">Galeria memów i zabawnych obrazków</h2>
-      <div class="gallery" aria-label="Galeria śmiesznych memów i zdjęć">
-
-        <img src="https://i.imgur.com/Tq4B97g.jpg" alt="Meme: Programista i kawa" loading="lazy" />
-        <img src="https://i.imgur.com/TFuN6YA.jpg" alt="Meme: Debugowanie" loading="lazy" />
-        <img src="https://i.imgur.com/p7WIEVm.jpg" alt="Meme: Elektronik w akcji" loading="lazy" />
-        <img src="https://i.imgur.com/c1ZXy6p.jpg" alt="Meme: Kiedy wszystko działa" loading="lazy" />
-        <img src="https://i.imgur.com/UHTqE8d.jpg" alt="Meme: Kabel vs kot" loading="lazy" />
-        <img src="https://i.imgur.com/fYQrv3h.jpg" alt="Meme: Nocne kodowanie" loading="lazy" />
-        <img src="https://i.imgur.com/VyhrfMH.jpg" alt="Meme: Debug w nocy" loading="lazy" />
-        <img src="https://i.imgur.com/N1g8XZc.jpg" alt="Meme: Elektronika zabawna" loading="lazy" />
-
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" tabindex="0" aria-labelledby="faq-title" role="region">
-      <h2 id="faq-title">FAQ — pytania i odpowiedzi na luzie</h2>
-
-      <div class="faq-list" role="list">
-        <div class="faq-item" role="listitem">
-          <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq1" id="faq1label">Czy naprawdę potraficie robić te wszystkie rzeczy?</div>
-          <div class="faq-answer" id="faq1" role="region" aria-labelledby="faq1label" hidden>
-            <p>Tak, chociaż czasem więcej rozbijamy niż składamy. Ale bez zabawy nie ma nauki!</p>
-          </div>
-        </div>
-        <div class="faq-item" role="listitem">
-          <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq2" id="faq2label">Czy robicie coś poważnego czy tylko żarty?</div>
-          <div class="faq-answer" id="faq2" role="region" aria-labelledby="faq2label" hidden>
-            <p>Trochę jedno, trochę drugie. Żarty to nasz sekret do sukcesu, a poważne projekty też się zdarzają — czasem w nocy.</p>
-          </div>
-        </div>
-        <div class="faq-item" role="listitem">
-          <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq3" id="faq3label">Czy kot może uszkodzić projekt elektroniczny?</div>
-          <div class="faq-answer" id="faq3" role="region" aria-labelledby="faq3label" hidden>
-            <p>Tak, zdecydowanie. Zwłaszcza jeśli ma futro na kablach i lubi "pomagać". Ale koty są tak urocze, że wybaczamy im wszystko.</p>
-          </div>
-        </div>
-        <div class="faq-item" role="listitem">
-          <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq4" id="faq4label">Jaką kawę polecacie programistom?</div>
-          <div class="faq-answer" id="faq4" role="region" aria-labelledby="faq4label" hidden>
-            <p>Zdecydowanie mocną, czarną i bez mleka. Najlepiej taką, która działa jak zasilacz 12V – szybko i mocno!</p>
-          </div>
-        </div>
-        <div class="faq-item" role="listitem">
-          <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq5" id="faq5label">Czy lubicie pracować nocą?</div>
-          <div class="faq-answer" id="faq5" role="region" aria-labelledby="faq5label" hidden>
-            <p>Tak, noc to nasza kreatywna pora. Wtedy pomysły same wpadają, a kawa jest najsmaczniejsza.</p>
-          </div>
+  <section id="faq" tabindex="0" aria-labelledby="faq-title" role="region">
+    <h2 id="faq-title">FAQ</h2>
+    <div class="faq-list" role="list">
+      <div class="faq-item" role="listitem">
+        <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq1" id="faq1label">Czy naprawdę potraficie robić te rzeczy?</div>
+        <div class="faq-answer" id="faq1" role="region" aria-labelledby="faq1label" hidden>
+          <p>Tak, ale często więcej śmiesznych wpadek niż sukcesów.</p>
         </div>
       </div>
-    </section>
+      <div class="faq-item" role="listitem">
+        <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq2" id="faq2label">Czy tylko żarty czy też poważne projekty?</div>
+        <div class="faq-answer" id="faq2" role="region" aria-labelledby="faq2label" hidden>
+          <p>Trochę i jedno, i drugie. Śmiech pomaga w pracy!</p>
+        </div>
+      </div>
+      <div class="faq-item" role="listitem">
+        <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq3" id="faq3label">Czy kot może zniszczyć projekt?</div>
+        <div class="faq-answer" id="faq3" role="region" aria-labelledby="faq3label" hidden>
+          <p>Zdecydowanie. Ale trudno się gniewać na takiego pomocnika.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Kontakt -->
-    <section id="kontakt" tabindex="0" aria-labelledby="kontakt-title" role="region">
-      <h2 id="kontakt-title">Kontakt — napisz do nas!</h2>
+  <section id="kontakt" tabindex="0" aria-labelledby="kontakt-title" role="region">
+    <h2 id="kontakt-title">Kontakt</h2>
+    <form id="contactForm" aria-label="Formularz kontaktowy">
+      <h3>Napisz do nas!</h3>
+      <label for="name">Imię:</label>
+      <input type="text" id="name" name="name" required placeholder="Twoje imię" />
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required placeholder="twój@email.pl" />
+      <label for="message">Wiadomość:</label>
+      <textarea id="message" name="message" rows="5" required placeholder="Napisz coś"></textarea>
+      <button type="submit" aria-label="Wyślij wiadomość">Wyślij</button>
+      <div id="form-response" role="alert" aria-live="polite"></div>
+    </form>
+  </section>
 
-      <form id="contactForm" aria-label="Formularz kontaktowy">
-        <h3>Masz pytania lub chcesz się pośmiać? Napisz!</h3>
+</div>
 
-        <label for="name">Twoje imię:</label>
-        <input type="text" id="name" name="name" required autocomplete="name" placeholder="Grześ, Artur, Kotek..." />
+<footer>
+  &copy; 2025 Grzehula Store — Niebieski neon i dobry humor 💙
+</footer>
 
-        <label for="email">Twój e-mail:</label>
-        <input type="email" id="email" name="email" required autocomplete="email" placeholder="grzes@example.com" />
+<button id="toTopBtn" aria-label="Przewiń do góry" title="Do góry">↑</button>
 
-        <label for="message">Twoja wiadomość:</label>
-        <textarea id="message" name="message" rows="6" required placeholder="Napisz coś śmiesznego lub poważnego..."></textarea>
+<script>
+  // FAQ toggle
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const answer = q.nextElementSibling;
+      const expanded = q.getAttribute('aria-expanded') === 'true';
 
-        <button type="submit" aria-label="Wyślij wiadomość">Wyślij</button>
-        <div id="form-response" role="alert" aria-live="polite"></div>
-      </form>
-    </section>
-
-  </div>
-
-  <footer>
-    &copy; 2025 Grzehula Store — Tech, kawa i humor 🌿🤖
-  </footer>
-
-  <button id="toTopBtn" aria-label="Przewiń do góry" title="Do góry">↑</button>
-
-  <script>
-    // FAQ - toggle odpowiedzi
-    document.querySelectorAll('.faq-question').forEach(q => {
-      q.addEventListener('click', () => {
-        const item = q.parentElement;
-        const answer = q.nextElementSibling;
-        const expanded = q.getAttribute('aria-expanded') === 'true';
-
-        if (expanded) {
-          item.classList.remove('open');
-          q.setAttribute('aria-expanded', 'false');
-          answer.hidden = true;
-        } else {
-          item.classList.add('open');
-          q.setAttribute('aria-expanded', 'true');
-          answer.hidden = false;
-        }
-      });
-
-      // Obsługa klawiatury
-      q.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          q.click();
-        }
-      });
-    });
-
-    // Scroll to top button
-    const toTopBtn = document.getElementById('toTopBtn');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 400) {
-        toTopBtn.style.display = 'block';
+      if (expanded) {
+        item.classList.remove('open');
+        q.setAttribute('aria-expanded', 'false');
+        answer.hidden = true;
       } else {
-        toTopBtn.style.display = 'none';
+        item.classList.add('open');
+        q.setAttribute('aria-expanded', 'true');
+        answer.hidden = false;
       }
     });
-    toTopBtn.addEventListener('click', () => {
-      window.scrollTo({top: 0, behavior: 'smooth'});
-    });
-
-    // Formularz - prosty "mock" obsługi
-    const form = document.getElementById('contactForm');
-    const responseDiv = document.getElementById('form-response');
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-
-      const name = form.name.value.trim();
-      const email = form.email.value.trim();
-      const message = form.message.value.trim();
-
-      if (!name || !email || !message) {
-        responseDiv.textContent = 'Wypełnij wszystkie pola, proszę!';
-        responseDiv.style.color = '#e74c3c';
-        return;
+    q.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        q.click();
       }
-      // Proste sprawdzenie maila
-      if (!email.includes('@') || !email.includes('.')) {
-        responseDiv.textContent = 'Podaj poprawny adres e-mail!';
-        responseDiv.style.color = '#e74c3c';
-        return;
-      }
-
-      // "Wysyłanie" (tu możesz podłączyć backend)
-      responseDiv.textContent = 'Dzięki za wiadomość! Odezwę się jak tylko zapiję kawę ☕';
-      responseDiv.style.color = '#1db954';
-
-      form.reset();
     });
-  </script>
+  });
+
+  // Scroll to top button
+  const toTopBtn = document.getElementById('toTopBtn');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      toTopBtn.style.display = 'block';
+    } else {
+      toTopBtn.style.display = 'none';
+    }
+  });
+  toTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Form handling (mock)
+  const form = document.getElementById('contactForm');
+  const responseDiv = document.getElementById('form-response');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+
+    if (!name || !email || !message) {
+      responseDiv.textContent = 'Wypełnij wszystkie pola!';
+      responseDiv.style.color = '#ff4d4d';
+      return;
+    }
+    if (!email.includes('@') || !email.includes('.')) {
+      responseDiv.textContent = 'Podaj poprawny email!';
+      responseDiv.style.color = '#ff4d4d';
+      return;
+    }
+
+    responseDiv.textContent = 'Dzięki! Odezwę się jak tylko zapiję kawę ☕';
+    responseDiv.style.color = '#00e5ff';
+
+    form.reset();
+  });
+</script>
 
 </body>
 </html>
