@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Grzehula Hub - Mega Nowoczesna Strona 2025</title>
+  <title>Grzehula Store - Strona 2025</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
   <style>
@@ -337,7 +337,6 @@
       <li role="none"><a role="menuitem" href="#faq" tabindex="0">FAQ</a></li>
       <li role="none"><a role="menuitem" href="#map" tabindex="0">Nasza lokalizacja</a></li>
       <li role="none"><a role="menuitem" href="#kontakt" tabindex="0">Kontakt</a></li>
-      <li role="none"><a role="menuitem" href="#gierka" tabindex="0">Gierka</a></li>
     </ul>
   </nav>
 
@@ -432,18 +431,12 @@
       <p id="form-response" role="alert" aria-live="polite" style="margin-top:15px; text-align:center;"></p>
     </section>
 
-    <!-- Gierka - Chrome Dino easter egg -->
-    <section id="gierka" tabindex="0" aria-labelledby="gierka-title" role="region">
-      <h2 id="gierka-title">Gierka: Chrome Dino</h2>
-      <p>Zagraj w kultową grę dinozaura z Chrome!</p>
-      <canvas id="dino-game" width="600" height="150" style="background:#fff; border-radius:10px; box-shadow:0 5px 15px rgba(29,185,84,0.4); display: block; margin: 0 auto;"></canvas>
-      <p style="text-align:center; margin-top:10px; font-size: 1rem; color: #bbb;">Sterowanie: spacja lub strzałka w górę — skacz. Powodzenia!</p>
-    </section>
+   
 
   </div>
 
   <footer>
-    &copy; 2025 Grzehula Hub. Wszystkie prawa zastrzeżone. Made with 💚 by ChatGPT.
+    &copy; 2025 Grzehula Store. Wszystkie prawa zastrzeżone.
   </footer>
 
   <script>
@@ -475,149 +468,6 @@
       response.textContent = 'Dziękujemy za wiadomość! Odezwiemy się najszybciej jak to możliwe.';
       form.reset();
     });
-
-    // Prosta gra Chrome Dino (bardzo uproszczona wersja)
-
-   <script>
-(function() {
-  const canvas = document.getElementById('dino-game');
-  if (!canvas.getContext) return;
-  const ctx = canvas.getContext('2d');
-  const width = canvas.width;
-  const height = canvas.height;
-
-  let dino = {
-    x: 50,
-    y: height - 45,
-    width: 40,
-    height: 40,
-    dy: 0,
-    gravity: 1,
-    jumpPower: 15,
-    isJumping: false,
-  };
-
-  let obstacles = [];
-  let obstacleSpeed = 3.5; // ZMNIEJSZONA predkość przeszkód
-  let spawnTimer = 0;
-  let score = 0;
-  let gameOver = false;
-  let restartButton = null;
-
-  function jump() {
-    if (!dino.isJumping) {
-      dino.dy = -dino.jumpPower;
-      dino.isJumping = true;
-    }
-  }
-
-  window.addEventListener('keydown', e => {
-    if ((e.code === 'Space' || e.code === 'ArrowUp') && !gameOver) {
-      e.preventDefault();
-      jump();
-    }
-  });
-
-  function drawDino() {
-    ctx.fillStyle = '#1db954';
-    ctx.fillRect(dino.x, dino.y, dino.width, dino.height);
-    ctx.fillStyle = '#121212';
-    ctx.fillRect(dino.x + 10, dino.y + 10, 8, 8);
-  }
-
-  function drawObstacles() {
-    ctx.fillStyle = '#e02424';
-    obstacles.forEach(obs => {
-      ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
-    });
-  }
-
-  function updateObstacles() {
-    spawnTimer--;
-    if (spawnTimer <= 0) {
-      const heightObs = 30 + Math.random() * 20;
-      obstacles.push({
-        x: width,
-        y: height - heightObs - 5,
-        width: 15,
-        height: heightObs,
-      });
-      spawnTimer = 70 + Math.floor(Math.random() * 60);
-    }
-    obstacles.forEach((obs, i) => {
-      obs.x -= obstacleSpeed;
-      if (obs.x + obs.width < 0) {
-        obstacles.splice(i, 1);
-        score++;
-      }
-    });
-  }
-
-  function checkCollision() {
-    return obstacles.some(obs => (
-      dino.x < obs.x + obs.width &&
-      dino.x + dino.width > obs.x &&
-      dino.y < obs.y + obs.height &&
-      dino.y + dino.height > obs.y
-    ));
-  }
-
-  function drawRestartButton() {
-    restartButton = document.createElement('button');
-    restartButton.textContent = 'Zagraj ponownie';
-    restartButton.style.position = 'absolute';
-    restartButton.style.top = canvas.offsetTop + height / 2 + 50 + 'px';
-    restartButton.style.left = canvas.offsetLeft + width / 2 - 75 + 'px';
-    restartButton.style.transform = 'translate(-50%, -50%)';
-    restartButton.style.padding = '10px 20px';
-    restartButton.style.fontSize = '1rem';
-    restartButton.style.backgroundColor = '#1db954';
-    restartButton.style.border = 'none';
-    restartButton.style.borderRadius = '8px';
-    restartButton.style.cursor = 'pointer';
-    restartButton.onclick = () => location.reload();
-    document.body.appendChild(restartButton);
-  }
-
-  function gameLoop() {
-    ctx.clearRect(0, 0, width, height);
-    ctx.fillStyle = '#f0f0f0';
-    ctx.fillRect(0, height - 5, width, 5);
-
-    dino.dy += dino.gravity;
-    dino.y += dino.dy;
-    if (dino.y > height - dino.height - 5) {
-      dino.y = height - dino.height - 5;
-      dino.isJumping = false;
-      dino.dy = 0;
-    }
-
-    if (!gameOver) {
-      updateObstacles();
-      drawObstacles();
-      drawDino();
-
-      ctx.fillStyle = '#333';
-      ctx.font = '20px monospace';
-      ctx.fillText(`Wynik: ${score}`, width - 130, 30);
-
-      if (checkCollision()) {
-        gameOver = true;
-        ctx.fillStyle = 'rgba(255,0,0,0.6)';
-        ctx.fillRect(0, 0, width, height);
-        ctx.fillStyle = '#fff';
-        ctx.font = '40px monospace';
-        ctx.fillText('KONIEC GRY!', width / 2 - 100, height / 2);
-        drawRestartButton();
-      } else {
-        requestAnimationFrame(gameLoop);
-      }
-    }
-  }
-
-  gameLoop();
-})();
-</script>
 
 </body>
 </html>
