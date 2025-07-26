@@ -494,5 +494,72 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
   </script>
+  <!-- Animowane gwiazdki na tle -->
+<canvas id="stars-canvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 0;"></canvas>
+
+<script>
+  (() => {
+    const canvas = document.getElementById('stars-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let stars = [];
+
+    function init() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+      stars = [];
+      const starCount = Math.floor(width * height / 2000); // liczba gwiazdek zależna od wielkości ekranu
+
+      for (let i = 0; i < starCount; i++) {
+        stars.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          radius: Math.random() * 1.2 + 0.3,
+          alpha: Math.random(),
+          alphaChange: (Math.random() * 0.02) + 0.005,
+          increasing: Math.random() > 0.5
+        });
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      stars.forEach(star => {
+        if(star.increasing) {
+          star.alpha += star.alphaChange;
+          if(star.alpha >= 1) {
+            star.alpha = 1;
+            star.increasing = false;
+          }
+        } else {
+          star.alpha -= star.alphaChange;
+          if(star.alpha <= 0) {
+            star.alpha = 0;
+            star.increasing = true;
+          }
+        }
+
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0, 255, 255, ${star.alpha})`; // jasny błękit
+        ctx.shadowColor = '#0ff';
+        ctx.shadowBlur = 5;
+        ctx.fill();
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', () => {
+      init();
+    });
+
+    init();
+    animate();
+  })();
+</script>
+
 </body>
 </html>
