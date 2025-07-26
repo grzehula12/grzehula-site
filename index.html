@@ -374,3 +374,115 @@
           <div class="review">Najlepszy układ do wysokiego napięcia, jaki miałem!</div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <h2>Galeria</h2>
+    <div class="gallery">
+      <img src="licznik.jpg" alt="Licznik" />
+      <img src="lampa.png" alt="Lampa rentgenowska" />
+      <img src="zvs.jpg" alt="Układ ZVS" />
+    </div>
+  </section>
+
+  <section id="reviews">
+    <h2>Opinie klientów</h2>
+    <div class="reviews">
+      <div class="review-item">
+        <strong>Artur</strong>
+        Ten licznik jest naprawdę świetny, polecam każdemu!
+      </div>
+      <div class="review-item">
+        <strong>Monika</strong>
+        Lampa działa, ale trzeba uważać przy podłączaniu. Ogólnie spoko.
+      </div>
+      <div class="review-item">
+        <strong>Grzegorz</strong>
+        Układ ZVS to mój ulubiony projekt, super wykonanie!
+      </div>
+    </div>
+  </section>
+
+  <section id="blog">
+    <h2>Blog</h2>
+    <div class="blog-posts">
+      <div class="post">
+        <h4>Jak zbudować licznik jonizacyjny?</h4>
+        <p>W tym wpisie opisuję krok po kroku jak zbudować prosty i skuteczny licznik jonizacyjny...</p>
+      </div>
+      <div class="post">
+        <h4>Porady przy pracy z lampami rentgenowskimi</h4>
+        <p>Bezpieczeństwo przede wszystkim! Kilka wskazówek, które pomogą Ci pracować bezpiecznie z lampami rentgenowskimi.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2>FAQ — Najczęściej zadawane pytania</h2>
+    <div class="faq-item">
+      <div class="faq-question">Czy mogę kupić u Ciebie gotowe zestawy?</div>
+      <div class="faq-answer">Tak, oferuję gotowe zestawy oraz części do samodzielnego montażu.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Czy oferujesz wsparcie techniczne?</div>
+      <div class="faq-answer">Oczywiście! Chętnie pomogę z każdym projektem lub pytaniem.</div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Kontakt</h2>
+    <form onsubmit="alert('Dzięki za wiadomość! Napisz do mnie na email.'); return false;">
+      <input type="text" name="name" placeholder="Twoje imię" required />
+      <input type="email" name="email" placeholder="Twój email" required />
+      <textarea name="message" rows="5" placeholder="Twoja wiadomość" required></textarea>
+      <button type="submit">Wyślij</button>
+    </form>
+  </section>
+
+</main>
+
+<button id="scrollTopBtn" title="Powrót do góry">&#8679;</button>
+
+<script>
+  // Menu mobilne
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navUl = document.querySelector('nav ul');
+
+  menuToggle.addEventListener('click', () => {
+    navUl.classList.toggle('open');
+  });
+
+  // Zamknij menu po kliknięciu w link (na telefonach)
+  document.querySelectorAll('nav ul li a').forEach(link => {
+    link.addEventListener('click', () => {
+      navUl.classList.remove('open');
+    });
+  });
+
+  // Przycisk "powrót do góry"
+  const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+  window.addEventListener('scroll', () => {
+    if(window.scrollY > 300) {
+      scrollTopBtn.style.display = 'flex';
+    } else {
+      scrollTopBtn.style.display = 'none';
+    }
+  });
+
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+
+  // FAQ - rozkładanie odpowiedzi
+  document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', () => {
+      const parent = question.parentElement;
+      parent.classList.toggle('open');
+    });
+  });
+</script>
+
+</body>
+</html>
