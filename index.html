@@ -469,30 +469,13 @@
       form.reset();
     });
     
-    <script>
-  document.querySelectorAll('.faq-question').forEach((question) => {
-    function toggleAnswer() {
-      const answerId = question.getAttribute('aria-controls');
-      const answer = document.getElementById(answerId);
-      const expanded = question.getAttribute('aria-expanded') === 'true';
-
-      question.setAttribute('aria-expanded', (!expanded).toString());
-      if (expanded) {
-        answer.setAttribute('hidden', '');
-      } else {
-        answer.removeAttribute('hidden');
-      }
-    }
-
-    question.addEventListener('click', toggleAnswer);
-    question.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        toggleAnswer();
-      }
-    });
-  });
-</script>
+  <h2>Kontakt</h2>
+    <p>Skontaktuj się mailowo lub przez social media:</p>
+    <div class="socials">
+      <a href="mailto:grzegorz.rozwadowski.10@gmail.com">📧 E-mail</a>
+      <a href="https://instagram.com/grzehula1234" target="_blank">📷 Instagram</a>
+      <a href="https://github.com/grzehula12" target="_blank">💻 GitHub</a>
+    </div>
 
 
 </body>
