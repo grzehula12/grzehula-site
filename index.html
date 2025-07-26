@@ -1,3 +1,4 @@
+
 <html lang="pl">
 <head>
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -396,14 +397,25 @@
   }
 
   /* Przycisk prank "NIE KLIKAĆ" */
-<button id="doosBtn" style="padding: 20px 40px; font-size: 20px; background-color: #ff3366; color: white; border: none; border-radius: 12px; cursor: pointer; transition: transform 0.2s;">
-  DoOS 🔥
-</button>
-
-<div id="rickContainer" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: black; z-index: 9999; justify-content: center; align-items: center;">
-  <img src="rick.gif" alt="Rick Roll" style="max-width: 100%; max-height: 100%; object-fit: cover;" />
-</div>
-
+  #prankBtn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: #ff3b3b;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    z-index: 2000;
+    user-select: none;
+    box-shadow: 0 2px 10px #a00;
+    transition: background-color 0.3s ease;
+  }
+  #prankBtn:hover {
+    background: #cc2b2b;
+  }
 
   /* Modal prank */
   #prankModal {
@@ -734,30 +746,25 @@
 <!-- Scroll to top button -->
 <button id="scrollTopBtn" title="Powrót do góry">&#8679;</button>
 
-<!-- Przyciski -->
-<button id="dont-click">🚫 NIE KLIKAĆ</button>
+<!-- Przycisk prank "NIE KLIKAĆ" -->
+<button id="prankBtn" title="NIE KLIKAĆ">NIE KLIKAĆ</button>
 
-<form id="ddos-form" style="display: none;">
-  <input type="text" placeholder="Wpisz cel ataku..." required />
-  <button type="submit">Rozpocznij</button>
-</form>
-
-<div id="rickroll" style="display: none; text-align: center; margin-top: 20px;">
-  <img src="rick.gif" alt="Rickroll" style="max-width: 100%; height: auto;" />
+<!-- Modal prank -->
+<div id="prankModal">
+  <form id="prankForm">
+    <h3>Atak DDoS</h3>
+    <label>
+      IP celu:
+      <input type="text" name="targetIP" placeholder="np. 192.168.1.1" required />
+    </label>
+    <label>
+      Ilość pakietów:
+      <input type="number" name="packets" min="1" max="10000" placeholder="np. 1000" required />
+    </label>
+    <button type="submit">ATTAK</button>
+    <button type="button" id="prankCloseBtn">ANULUJ</button>
+  </form>
 </div>
-
-<script>
-  document.getElementById("dont-click").addEventListener("click", function () {
-    document.getElementById("ddos-form").style.display = "block";
-  });
-
-  document.getElementById("ddos-form").addEventListener("submit", function (e) {
-    e.preventDefault();
-    document.getElementById("ddos-form").style.display = "none";
-    document.getElementById("rickroll").style.display = "block";
-  });
-</script>
-
 
 <!-- Live chat -->
 <button id="chatBtn">Chat</button>
@@ -827,20 +834,9 @@
   const prankForm = document.getElementById('prankForm');
   const prankCloseBtn = document.getElementById('prankCloseBtn');
 
-  prankBtn.addEventListener('click', () => {
-    prankModal.style.display = 'flex';
-  });
-  prankCloseBtn.addEventListener('click', () => {
-    prankModal.style.display = 'none';
-  });
-  prankForm.addEventListener('submit', e => {
-    e.preventDefault();
-    prankModal.style.display = 'none';
-    alert('Rozpoczynam atak DDoS! 🚀');
-    setTimeout(() => {
-      window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
-    }, 600);
-  });
+ <div id="rickContainer" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: black; z-index: 9999; justify-content: center; align-items: center;">
+  <img src="rick.gif" alt="Rick Roll" style="max-width: 100%; max-height: 100%; object-fit: cover;" />
+</div>
 
   // Lightbox galeria
   const galleryImgs = document.querySelectorAll('.gallery img');
@@ -938,13 +934,6 @@
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }, 800);
   }
-  <script>
-  document.getElementById("doosBtn").addEventListener("click", function() {
-    const rick = document.getElementById("rickContainer");
-    rick.style.display = "flex";
-  });
-</script>
-
 </script>
 
 </body>
