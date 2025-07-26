@@ -1,26 +1,13 @@
-
+<!DOCTYPE html>
 <html lang="pl">
 <head>
-<link rel="icon" href="favicon.ico" type="image/x-icon" />
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Grzehula Store - Mega Strona</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
 
 <style>
-  .gradient-bg {
-  height: 500px;
-  background: linear-gradient(135deg, #007bff, #00d4ff);
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  font-weight: bold;
-  text-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
-
-
-  /* Reset i podstawy */
+  /* Podstawowe style */
   * {
     box-sizing: border-box;
     margin: 0; padding: 0;
@@ -41,6 +28,7 @@
   a:hover {
     text-decoration: underline;
   }
+
   /* DARK MODE */
   body.dark-mode {
     background: #121212;
@@ -68,7 +56,7 @@
   body.dark-mode nav ul.open {
     background: #1f1f1f;
   }
-  
+
   /* Header i menu */
   header {
     background: #222;
@@ -404,462 +392,223 @@
     background: #ff3b3b;
     color: white;
     border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
+    padding: 15px 40px;
+    border-radius: 25px;
     cursor: pointer;
     font-weight: bold;
+    font-size: 1.1rem;
     z-index: 2000;
     user-select: none;
-    box-shadow: 0 2px 10px #a00;
+    box-shadow: 0 0 12px #ff3b3bcc;
     transition: background-color 0.3s ease;
   }
   #prankBtn:hover {
     background: #cc2b2b;
   }
 
-  /* Modal prank */
-  #prankModal {
-    display: none;
+  /* GIT GIF - pełnoekranowy overlay */
+  #gifOverlay {
     position: fixed;
     top: 0; left: 0;
     width: 100vw; height: 100vh;
-    background: rgba(0,0,0,0.7);
+    background: rgba(0,0,0,0.85);
+    display: none;
     justify-content: center;
     align-items: center;
-    z-index: 3000;
+    z-index: 30000;
   }
-  #prankModal form {
-    background: white;
-    padding: 20px 30px;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  #gifOverlay img {
+    max-width: 95vw;
+    max-height: 95vh;
+    border-radius: 12px;
+    box-shadow: 0 0 30px #000;
   }
-  #prankModal form h3 {
-    margin-bottom: 10px;
-    color: #ff3b3b;
+  /* Przyciski w stopce i pod strona */
+  footer {
     text-align: center;
-  }
-  #prankModal form label {
-    font-weight: 600;
-  }
-  #prankModal form input {
-    width: 100%;
-    padding: 8px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  #prankModal form button[type="submit"] {
-    background: #ff3b3b;
-    border: none;
-    color: white;
-    font-weight: 700;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 5px;
-  }
-  #prankModal form button[type="button"] {
-    background: #aaa;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  #prankModal form button[type="button"]:hover {
-    background: #888;
-  }
-
-  /* Live chat */
-  #chatBtn {
-    position: fixed;
-    bottom: 80px;
-    left: 20px;
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 50px;
-    cursor: pointer;
-    font-weight: 600;
-    z-index: 2500;
-    box-shadow: 0 2px 8px rgba(0,123,255,0.5);
-    user-select: none;
-  }
-  #chatBox {
-    position: fixed;
-    bottom: 140px;
-    left: 20px;
-    width: 320px;
-    max-width: 90vw;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
-    display: none;
-    flex-direction: column;
-    user-select: none;
-    z-index: 3000;
-  }
-  #chatBox.dark-mode {
+    padding: 1.5rem;
     background: #222;
-    color: #eee;
-  }
-  #chatHeader {
-    background: #007bff;
     color: white;
-    padding: 10px 15px;
-    border-radius: 10px 10px 0 0;
-    font-weight: 600;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  #chatCloseBtn {
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-  }
-  #chatMessages {
-    padding: 10px 15px;
-    height: 200px;
-    overflow-y: auto;
-    font-size: 0.9rem;
-    flex-grow: 1;
-  }
-  #chatInputContainer {
-    display: flex;
-    border-top: 1px solid #ddd;
-  }
-  #chatInput {
-    flex-grow: 1;
-    border: none;
-    padding: 10px 15px;
-    font-size: 1rem;
-    border-radius: 0 0 0 10px;
-    outline: none;
-  }
-  #chatSendBtn {
-    background: #007bff;
-    border: none;
-    color: white;
-    padding: 10px 15px;
-    font-weight: 700;
-    cursor: pointer;
-    border-radius: 0 0 10px 0;
-  }
-  #chatSendBtn:hover {
-    background: #0056b3;
-  }
-
-  /* Newsletter */
-  #newsletter input[type="email"] {
-    max-width: 350px;
-    margin-top: 10px;
-  }
-  #newsletter button {
-    margin-top: 10px;
-  }
-
-  /* Licznik odwiedzin */
-  #visitCounter {
-    text-align: center;
-    font-size: 0.9rem;
-    color: #666;
-    margin-top: -1rem;
-    margin-bottom: 1rem;
     user-select: none;
   }
+
 </style>
 </head>
-
 <body>
 
 <header>
   <nav>
     <div class="logo">Grzehula Store</div>
-    <div class="menu-toggle">&#9776;</div>
-    <ul>
-      <li><a href="#products">Produkty</a></li>
-      <li><a href="#gallery">Galeria</a></li>
-      <li><a href="#reviews">Opinie</a></li>
+    <div class="menu-toggle" id="menuToggle">&#9776;</div>
+    <ul id="navMenu">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#produkty">Produkty</a></li>
+      <li><a href="#gry">Gry</a></li> <!-- Nowa zakładka ze środka -->
+      <li><a href="#opinie">Opinie</a></li>
       <li><a href="#blog">Blog</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#newsletter">Newsletter</a></li>
-      <li><a href="#contact">Kontakt</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
     </ul>
   </nav>
 </header>
 
 <main>
 
-  <section id="products">
-    <h2>Produkty</h2>
+  <section id="home" class="visible">
+    <h2>Witamy w Grzehula Store!</h2>
+    <p>Super miejsce na wszystko, co chcesz mieć!</p>
+    <button id="showRickBtn">Zobacz Rick GIF</button>
+  </section>
+
+  <section id="produkty" class="visible">
+    <h2>Nasze Produkty</h2>
     <div class="products">
-      <div class="product" data-rating="4.7">
-        <img src="licznik.jpg" alt="Licznik Geigera" />
+      <div class="product">
+        <img src="product1.jpg" alt="Produkt 1" />
         <div class="product-content">
-          <h3>Licznik Geigera</h3>
-          <div class="stars">★★★★☆ (4.7)</div>
-          <div class="review">Super sprzęt dla pasjonatów elektroniki.</div>
+          <h3>Produkt 1</h3>
+          <div class="stars">⭐⭐⭐⭐☆</div>
+          <p class="review">Świetny produkt, polecam!</p>
         </div>
       </div>
-      <div class="product" data-rating="3.5">
-        <img src="lampa.png" alt="Lampa Rentgenowska" />
+      <div class="product">
+        <img src="product2.jpg" alt="Produkt 2" />
         <div class="product-content">
-          <h3>Lampa Rentgenowska</h3>
-          <div class="stars">★★★☆☆ (3.5)</div>
-          <div class="review">Jakość lampy spełnia moje oczekiwania.</div>
+          <h3>Produkt 2</h3>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p class="review">Najlepszy wybór dla każdego.</p>
         </div>
       </div>
-      <div class="product" data-rating="4.3">
-        <img src="zvs.jpg" alt="Układ ZVS" />
+      <div class="product">
+        <img src="product3.jpg" alt="Produkt 3" />
         <div class="product-content">
-          <h3>Układ ZVS</h3>
-          <div class="stars">★★★★☆ (4.3)</div>
-          <div class="review">Łatwy w użyciu i niezawodny.</div>
+          <h3>Produkt 3</h3>
+          <div class="stars">⭐⭐⭐☆☆</div>
+          <p class="review">Dobra jakość za cenę.</p>
         </div>
       </div>
     </div>
+  </section>
 
+  <section id="gry" class="visible">
+    <h2>Gierki</h2>
+    <p>Tu możesz dodać swoją ulubioną gierkę (np. Chrome Dino albo Rick Roll prank).</p>
+    <!-- Możesz tutaj wstawić iframe lub własny skrypt gierki -->
+    <iframe src="https://chromedino.com/" width="600" height="150" style="border:none; border-radius:10px;"></iframe>
+  </section>
+
+  <section id="opinie" class="visible">
+    <h2>Opinie klientów</h2>
     <div class="reviews-filter">
-      <label for="filterRating">Filtruj opinie wg oceny:</label>
-      <select id="filterRating">
+      <label for="starFilter">Filtruj opinie wg gwiazdek: </label>
+      <select id="starFilter">
         <option value="all">Wszystkie</option>
-        <option value="4">4 gwiazdki i więcej</option>
-        <option value="3">3 gwiazdki i więcej</option>
-        <option value="0">Wszystkie</option>
+        <option value="5">5 gwiazdek</option>
+        <option value="4">4 gwiazdki</option>
+        <option value="3">3 gwiazdki</option>
       </select>
     </div>
-  </section>
-
-  <section id="gallery">
-    <h2>Galeria</h2>
-    <div class="gallery">
-      <img src="licznik.jpg" alt="Licznik Geigera" />
-      <img src="lampa.png" alt="Lampa Rentgenowska" />
-      <img src="zvs.jpg" alt="Układ ZVS" />
+    <div class="reviews" id="reviewsList">
+      <div class="review-item" data-stars="5"><strong>Anna:</strong> Super jakość i szybka dostawa!</div>
+      <div class="review-item" data-stars="4"><strong>Michał:</strong> Produkt spełnia oczekiwania.</div>
+      <div class="review-item" data-stars="3"><strong>Ela:</strong> Trochę drogo, ale działa.</div>
+      <div class="review-item" data-stars="5"><strong>Piotr:</strong> Mega polecam, warto kupić.</div>
     </div>
   </section>
 
-  <section id="reviews">
-    <h2>Opinie klientów</h2>
-    <div class="reviews">
-      <div class="review-item" data-rating="5"><strong>Janek:</strong> Świetny sprzęt, polecam każdemu!</div>
-      <div class="review-item" data-rating="4"><strong>Agnieszka:</strong> Bardzo szybka wysyłka i dobre ceny.</div>
-      <div class="review-item" data-rating="3"><strong>Marcin:</strong> Obsługa klienta na medal.</div>
+  <section id="blog" class="visible">
+    <h2>Blog</h2>
+    <div class="blog-posts">
+      <article class="post">
+        <h4>Nowości w sklepie</h4>
+        <p>Wprowadziliśmy nowe produkty i ulepszyliśmy stronę!</p>
+      </article>
+      <article class="post">
+        <h4>Jak korzystać z naszych gier</h4>
+        <p>Instrukcje i wskazówki dotyczące najlepszych gier na naszej stronie.</p>
+      </article>
     </div>
   </section>
 
-  <section id="blog" margin:auto; padding:1rem;">
-  <h2>Blog</h2>
-
-  <div class="post" style="border-bottom:1px solid #ddd; padding:1rem 0;">
-    <h3 class="post-title" style="cursor:pointer; user-select:none; font-weight:700;">
-      Jak zbudować licznik Geigera? <span class="toggle-btn" style="color:#007bff; margin-left:0.5rem; font-weight:normal;">[+]</span>
-    </h3>
-    <div class="post-content" style="display:none; margin-top:0.5rem;">
-      <p>Licznik Geigera to urządzenie służące do wykrywania promieniowania jonizującego. Aby go zbudować, potrzebujesz odpowiednich komponentów i podstawowej wiedzy o elektronice.</p>
-      <p>Najpierw zbierz potrzebne elementy: lampa Geigera, układ wzmacniający, zasilacz oraz obwody zabezpieczające. Następnie połącz je zgodnie ze schematem, dbając o bezpieczeństwo podczas pracy z wysokim napięciem.</p>
-    </div>
-  </div>
-
-  <div class="post" style="border-bottom:1px solid #ddd; padding:1rem 0;">
-    <h3 class="post-title" style="cursor:pointer; user-select:none; font-weight:700;">
-      Podstawy elektroniki dla początkujących <span class="toggle-btn" style="color:#007bff; margin-left:0.5rem; font-weight:normal;">[+]</span>
-    </h3>
-    <div class="post-content" style="display:none; margin-top:0.5rem;">
-      <p>Elektronika to fascynująca dziedzina, która pozwala zrozumieć działanie prądów, napięć i komponentów elektronicznych.</p>
-      <p>Zacznij od nauki podstawowych elementów, takich jak rezystory, kondensatory i tranzystory. Poznanie ich funkcji i zachowania w obwodach pozwoli Ci tworzyć własne projekty i eksperymenty.</p>
-    </div>
-  </div>
-
-</section>
-
-<script>
-  document.querySelectorAll('.post-title').forEach(title => {
-    title.addEventListener('click', () => {
-      const content = title.nextElementSibling;
-      if (content.style.display === 'none' || !content.style.display) {
-        content.style.display = 'block';
-        title.querySelector('.toggle-btn').textContent = '[-]';
-      } else {
-        content.style.display = 'none';
-        title.querySelector('.toggle-btn').textContent = '[+]';
-      }
-    });
-  });
-</script>
-
-
-  <section id="faq">
-    <h2>FAQ</h2>
-    <div class="faq-item">
-      <div class="faq-question">Czy mogę kupić u Ciebie gotowe zestawy? <span>+</span></div>
-      <div class="faq-answer">Tak, oferuję gotowe zestawy oraz części do samodzielnego montażu.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">Czy oferujesz wsparcie techniczne? <span>+</span></div>
-      <div class="faq-answer">Oczywiście! Chętnie pomogę z każdym projektem lub pytaniem.</div>
-    </div>
-  </section>
-
-  <section id="newsletter">
-    <h2>Zapisz się do newslettera</h2>
-    <form id="newsletterForm">
-      <input type="email" placeholder="Twój email" required />
-      <button type="submit">Zapisz się</button>
-    </form>
-  </section>
-
-  <section id="contact">
+  <section id="kontakt" class="visible">
     <h2>Kontakt</h2>
     <form id="contactForm">
-      <input type="text" name="name" placeholder="Twoje imię" required />
-      <input type="email" name="email" placeholder="Twój email" required />
-      <textarea name="message" rows="5" placeholder="Twoja wiadomość" required></textarea>
+      <input type="text" id="name" placeholder="Imię" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <textarea id="message" placeholder="Twoja wiadomość" rows="5" required></textarea>
       <button type="submit">Wyślij</button>
     </form>
   </section>
 
-  <div id="visitCounter"></div>
-
-  <section id="mapSection">
-    <h2>Nasza lokalizacja</h2>
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2448.338154708785!2d21.012228415877217!3d52.22967597978814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471eccf557a9eb55%3A0xa5e66b11ef1eb223!2sWarsaw%2C%20Poland!5e0!3m2!1sen!2sus!4v1680000000000!5m2!1sen!2sus"
-      width="100%"
-      height="300"
-      style="border:0;"
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-    ></iframe>
-  </section>
-
 </main>
 
-<!-- Scroll to top button -->
-<button id="scrollTopBtn" title="Powrót do góry">&#8679;</button>
+<footer>
+  &copy; 2025 Grzehula Store. Wszystkie prawa zastrzeżone.
+</footer>
 
-<!-- Przycisk prank "NIE KLIKAĆ" -->
-<button id="prankBtn" title="NIE KLIKAĆ">NIE KLIKAĆ</button>
+<!-- Przycisk prank na dole z lewej -->
+<button id="prankBtn" title="Nie klikaj!">NIE KLIKAĆ</button>
 
-<!-- Modal prank -->
-<div id="prankModal">
-  <form id="prankForm">
-    <h3>Atak DDoS</h3>
-    <label>
-      IP celu:
-      <input type="text" name="targetIP" placeholder="np. 192.168.1.1" required />
-    </label>
-    <label>
-      Ilość pakietów:
-      <input type="number" name="packets" min="1" max="10000" placeholder="np. 1000" required />
-    </label>
-    <button type="submit">ATTAK</button>
-    <button type="button" id="prankCloseBtn">ANULUJ</button>
-  </form>
-</div>
+<!-- Scroll do góry -->
+<button id="scrollTopBtn" title="Do góry">&#8679;</button>
 
-<!-- Live chat -->
-<button id="chatBtn">Chat</button>
-<div id="chatBox">
-  <div id="chatHeader">
-    Chat z Grzehulą
-    <button id="chatCloseBtn">&times;</button>
-  </div>
-  <div id="chatMessages"></div>
-  <div id="chatInputContainer">
-    <input id="chatInput" type="text" placeholder="Napisz wiadomość..." />
-    <button id="chatSendBtn">Wyślij</button>
-  </div>
+<!-- GIF overlay -->
+<div id="gifOverlay">
+  <img src="rick.gif" alt="Rick GIF" />
 </div>
 
 <script>
-  // Menu toggle mobilne
-  const menuToggle = document.querySelector('.menu-toggle');
-  const navUl = document.querySelector('nav ul');
+  // MENU TOGGLE MOBILE
+  const menuToggle = document.getElementById('menuToggle');
+  const navMenu = document.getElementById('navMenu');
+
   menuToggle.addEventListener('click', () => {
-    navUl.classList.toggle('open');
-  });
-  document.querySelectorAll('nav ul li a').forEach(link => {
-    link.addEventListener('click', () => {
-      navUl.classList.remove('open');
-    });
+    navMenu.classList.toggle('open');
   });
 
-  // Animacje scrollowania - fade-in
-  function revealOnScroll() {
-    const sections = document.querySelectorAll('section');
-    const triggerBottom = window.innerHeight * 0.85;
-    sections.forEach(section => {
-      const boxTop = section.getBoundingClientRect().top;
-      if(boxTop < triggerBottom) {
-        section.classList.add('visible');
-      }
+  // SHOW RICK GIF ON BUTTON CLICK
+  const showRickBtn = document.getElementById('showRickBtn');
+  const gifOverlay = document.getElementById('gifOverlay');
+
+  showRickBtn.addEventListener('click', () => {
+    gifOverlay.style.display = 'flex';
+  });
+
+  gifOverlay.addEventListener('click', () => {
+    gifOverlay.style.display = 'none';
+  });
+
+  // FAQ toggle - (zakładam że kiedyś dodasz FAQ)
+  document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', () => {
+      const parent = question.parentElement;
+      parent.classList.toggle('open');
     });
-  }
-  window.addEventListener('scroll', revealOnScroll);
-  window.addEventListener('load', revealOnScroll);
+  });
 
   // Scroll to top button
-  const scrollTopBtn = document.getElementById('scrollTopBtn');
+  const scrollBtn = document.getElementById('scrollTopBtn');
+
   window.addEventListener('scroll', () => {
-    scrollTopBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
-  });
-  scrollTopBtn.addEventListener('click', () => {
-    window.scrollTo({top: 0, behavior: 'smooth'});
-  });
-
-  // FAQ - akordeon
-  document.querySelectorAll('.faq-question').forEach(q => {
-    q.addEventListener('click', () => {
-      const parent = q.parentElement;
-      parent.classList.toggle('open');
-      // zmiana ikonki +/-
-      const span = q.querySelector('span');
-      if(parent.classList.contains('open')) span.textContent = '−';
-      else span.textContent = '+';
-    });
+    if(window.scrollY > 300) {
+      scrollBtn.style.display = 'flex';
+    } else {
+      scrollBtn.style.display = 'none';
+    }
   });
 
-  // Prank "NIE KLIKAĆ"
-  const prankBtn = document.getElementById('prankBtn');
-  const prankModal = document.getElementById('prankModal');
-  const prankForm = document.getElementById('prankForm');
-  const prankCloseBtn = document.getElementById('prankCloseBtn');
-
- <div id="rickContainer" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: black; z-index: 9999; justify-content: center; align-items: center;">
-  <img src="rick.gif" alt="Rick Roll" style="max-width: 100%; max-height: 100%; object-fit: cover;" />
-</div>
-
-  // Lightbox galeria
-  const galleryImgs = document.querySelectorAll('.gallery img');
-  const lightbox = document.createElement('div');
-  lightbox.id = 'lightbox';
-  document.body.appendChild(lightbox);
-  galleryImgs.forEach(img => {
-    img.addEventListener('click', () => {
-      lightbox.style.display = 'flex';
-      lightbox.innerHTML = `<img src="${img.src}" alt="${img.alt}" />`;
-    });
-  });
-  lightbox.addEventListener('click', () => {
-    lightbox.style.display = 'none';
+  scrollBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  // Opinie - filtr wg gwiazdek
-  const filterRating = document.getElementById('filterRating');
-  filterRating.addEventListener('change', () => {
-    const minRating = Number(filterRating.value);
-    document.querySelectorAll('.review-item').forEach(r => {
-      const rating = Number(r.getAttribute('data-rating'));
-      if(filterRating.value === 'all' || rating >= minRating) {
+  // Opinie - filtr gwiazdek
+  const starFilter = document.getElementById('starFilter');
+  const reviewsList = document.getElementById('reviewsList');
+
+  starFilter.addEventListener('change', () => {
+    const val = starFilter.value;
+    const reviews = reviewsList.querySelectorAll('.review-item');
+    reviews.forEach(r => {
+      if(val === 'all' || r.dataset.stars === val) {
         r.style.display = 'block';
       } else {
         r.style.display = 'none';
@@ -867,73 +616,33 @@
     });
   });
 
-  // Formularz kontaktowy
+  // Formularz kontaktowy - przykładowa obsługa
   const contactForm = document.getElementById('contactForm');
   contactForm.addEventListener('submit', e => {
     e.preventDefault();
-    alert('Dziękujemy za wiadomość! Skontaktujemy się wkrótce.');
+    alert('Dziękujemy za wiadomość! Wkrótce się odezwiemy.');
     contactForm.reset();
   });
 
-  // Newsletter
-  const newsletterForm = document.getElementById('newsletterForm');
-  newsletterForm.addEventListener('submit', e => {
-    e.preventDefault();
-    alert('Dziękujemy za zapisanie się do newslettera!');
-    newsletterForm.reset();
+  // Przycisk prank
+  const prankBtn = document.getElementById('prankBtn');
+  prankBtn.addEventListener('click', () => {
+    alert('Mówiłem, że nie klikaj! 😂');
   });
 
-  // Licznik odwiedzin w localStorage
-  const visitCounter = document.getElementById('visitCounter');
-  let visits = localStorage.getItem('grzehulaVisits');
-  visits = visits ? Number(visits) + 1 : 1;
-  localStorage.setItem('grzehulaVisits', visits);
-  visitCounter.textContent = `Liczba Twoich wizyt na stronie: ${visits}`;
-
-  // Dark mode toggle na kliknięcie logo (śmieszny bajer)
-  const logo = document.querySelector('.logo');
-  logo.style.userSelect = 'none';
-  logo.addEventListener('dblclick', () => {
-    document.body.classList.toggle('dark-mode');
-  });
-
-  // Chat live (bardzo prosty, lokalny)
-  const chatBtn = document.getElementById('chatBtn');
-  const chatBox = document.getElementById('chatBox');
-  const chatCloseBtn = document.getElementById('chatCloseBtn');
-  const chatMessages = document.getElementById('chatMessages');
-  const chatInput = document.getElementById('chatInput');
-  const chatSendBtn = document.getElementById('chatSendBtn');
-
-  chatBtn.addEventListener('click', () => {
-    chatBox.style.display = 'flex';
-  });
-  chatCloseBtn.addEventListener('click', () => {
-    chatBox.style.display = 'none';
-  });
-  chatSendBtn.addEventListener('click', sendMessage);
-  chatInput.addEventListener('keypress', e => {
-    if(e.key === 'Enter') sendMessage();
-  });
-  function sendMessage() {
-    const msg = chatInput.value.trim();
-    if(!msg) return;
-    const msgEl = document.createElement('div');
-    msgEl.textContent = 'Ty: ' + msg;
-    msgEl.style.marginBottom = '8px';
-    chatMessages.appendChild(msgEl);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-    chatInput.value = '';
-
-    setTimeout(() => {
-      const botReply = document.createElement('div');
-      botReply.textContent = 'Grzehula: Dzięki za wiadomość! Niestety jestem botem.';
-      botReply.style.fontStyle = 'italic';
-      botReply.style.color = '#007bff';
-      chatMessages.appendChild(botReply);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }, 800);
+  // Animacja wejścia sekcji
+  function revealSections() {
+    document.querySelectorAll('section').forEach(section => {
+      const top = section.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
+      if(top < windowHeight - 100) {
+        section.classList.add('visible');
+      }
+    });
   }
+  window.addEventListener('scroll', revealSections);
+  window.addEventListener('load', revealSections);
+
 </script>
 
 </body>
