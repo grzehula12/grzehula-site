@@ -2,177 +2,375 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Grzehula.Store - moja strona</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Grzehula Store</title>
   <style>
+    /* Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0; padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
     body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      background: linear-gradient(135deg, #1e1e2f, #3f3f5f);
-      color: #fff;
+      line-height: 1.6;
+      background: #f9f9f9;
+      color: #333;
+      scroll-behavior: smooth;
     }
-    header {
-      padding: 40px 20px;
-      text-align: center;
-      background-color: rgba(0,0,0,0.2);
-    }
-    header h1 {
-      margin: 0;
-      font-size: 3em;
-    }
-    header p {
-      font-style: italic;
-      margin-top: 8px;
-      color: #ddd;
-    }
-    .content {
-      max-width: 1000px;
-      margin: auto;
-      padding: 30px 20px;
-    }
-    h2 {
-      color: #ffcc00;
-      border-bottom: 2px solid #ffcc00;
-      padding-bottom: 5px;
-    }
-    .socials a {
-      display: inline-block;
-      margin: 10px;
-      padding: 10px 20px;
-      background-color: #444;
-      color: #fff;
+    a {
+      color: #007bff;
       text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      background: #222;
+      color: #fff;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    nav .logo {
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.2rem;
+    }
+    nav ul li {
+      display: inline;
+    }
+    nav ul li a {
+      color: #fff;
+      font-weight: 600;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+    nav ul li a:hover {
+      background-color: #007bff;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+      background: #fff;
+      padding: 1.5rem 2rem;
       border-radius: 8px;
-      transition: 0.3s;
+      box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+      animation: fadeIn 1s ease forwards;
     }
-    .socials a:hover {
-      background-color: #ffcc00;
-      color: #000;
+
+    h2 {
+      margin-bottom: 1rem;
+      color: #222;
+      border-bottom: 2px solid #007bff;
+      padding-bottom: 0.3rem;
     }
+
+    /* Animacja pojawiania */
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* Sekcja O mnie */
+    #about p {
+      font-size: 1.1rem;
+    }
+
+    /* Produkty */
     .products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
+      gap: 1.5rem;
     }
     .product {
-      background: #2a2a3d;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.4);
-      text-align: center;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background: #fafafa;
+      transition: box-shadow 0.3s ease;
+    }
+    .product:hover {
+      box-shadow: 0 5px 15px rgba(0,123,255,0.3);
     }
     .product img {
-      max-width: 100%;
-      border-radius: 8px;
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 1px solid #ddd;
+    }
+    .product-content {
+      padding: 1rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
     .product h3 {
-      margin: 10px 0 5px;
-      color: #ffcc00;
+      margin-bottom: 0.5rem;
+      font-size: 1.25rem;
+      color: #007bff;
     }
-    .product p {
-      font-size: 0.95em;
+    .stars {
+      color: #f4c150;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
     }
-    .product ul {
-      text-align: left;
-      font-size: 0.9em;
-      padding-left: 20px;
-      margin-top: 10px;
-      margin-bottom: 10px;
-      color: #ddd;
-      font-style: italic;
+    .review {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 0.8rem;
     }
-    .product ul li {
-      margin-bottom: 5px;
+
+    /* Galeria */
+    .gallery {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
     }
-    .product button {
-      margin-top: 10px;
-      background-color: #ffcc00;
-      border: none;
-      color: #000;
-      padding: 10px 20px;
-      border-radius: 8px;
+    .gallery img {
+      max-width: 200px;
+      width: 100%;
+      border-radius: 6px;
       cursor: pointer;
-      transition: 0.3s;
-      font-weight: bold;
+      transition: transform 0.3s ease;
     }
-    .product button:hover {
-      background-color: #e6b800;
+    .gallery img:hover {
+      transform: scale(1.05);
     }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: rgba(0,0,0,0.1);
-      font-size: 0.9em;
-      margin-top: 40px;
-      color: #aaa;
+
+    /* Formularz kontaktowy */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    form input, form textarea {
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      resize: vertical;
+      transition: border-color 0.3s ease;
+    }
+    form input:focus, form textarea:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+    form button {
+      background: #007bff;
+      border: none;
+      color: white;
+      font-weight: 600;
+      padding: 0.7rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    form button:hover {
+      background: #0056b3;
+    }
+
+    /* FAQ */
+    .faq-item {
+      margin-bottom: 1rem;
+    }
+    .faq-question {
+      font-weight: 600;
+      cursor: pointer;
+      background: #e9ecef;
+      padding: 0.6rem 1rem;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    .faq-question:hover {
+      background: #007bff;
+      color: white;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 1rem;
+      transition: max-height 0.4s ease;
+      background: #f8f9fa;
+      border-left: 3px solid #007bff;
+      margin-top: 0.3rem;
+      border-radius: 0 5px 5px 0;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 200px;
+      padding: 0.6rem 1rem;
+    }
+
+    /* Opinie klientów */
+    .reviews {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .review-item {
+      background: #eef6ff;
+      border-left: 4px solid #007bff;
+      padding: 1rem 1.2rem;
+      border-radius: 5px;
+      font-style: italic;
+      color: #333;
+    }
+    .review-item strong {
+      font-weight: 700;
+      display: block;
+      margin-bottom: 0.3rem;
+      color: #007bff;
+    }
+
+    /* Blog */
+    .blog-posts {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .post {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 5px;
+      box-shadow: 0 1px 4px rgb(0 0 0 / 0.1);
+      transition: box-shadow 0.3s ease;
+    }
+    .post:hover {
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);
+    }
+    .post h4 {
+      color: #007bff;
+      margin-bottom: 0.5rem;
+    }
+    .post p {
+      color: #444;
+    }
+
+    /* Przycisk powrót do góry */
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease;
+      z-index: 1000;
+    }
+    #scrollTopBtn:hover {
+      background: #0056b3;
+    }
+
+    /* Responsywność */
+    @media(max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        background: #222;
+        position: fixed;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        display: none;
+      }
+      nav ul.open {
+        display: flex;
+      }
+      nav .menu-toggle {
+        display: block;
+        cursor: pointer;
+        color: white;
+        font-size: 1.5rem;
+      }
+    }
+    @media(min-width: 769px) {
+      nav .menu-toggle {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Grzehula.Store</h1>
-    <p>Mój sklep internetowy 😎</p>
-  </header>
+<header>
+  <nav>
+    <div class="logo">Grzehula Store</div>
+    <div class="menu-toggle">&#9776;</div>
+    <ul>
+      <li><a href="#about">O mnie</a></li>
+      <li><a href="#products">Produkty</a></li>
+      <li><a href="#gallery">Galeria</a></li>
+      <li><a href="#reviews">Opinie</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <div class="content">
+<main>
+
+  <section id="about">
     <h2>O mnie</h2>
-    <p>Cześć! Nazywam się Grzegorz. Interesuję się elektroniką, projektowaniem i różnymi dziwnymi eksperymentami. Na tej stronie znajdziesz mój sklep oraz dane kontaktowe.</p>
+    <p>Cześć! Jestem Grzehula i uwielbiam elektronikę, naprawy oraz majsterkowanie. Na tej stronie znajdziesz moje produkty, projekty oraz wiele ciekawostek z mojego świata.</p>
+  </section>
 
-    <h2>Kontakt</h2>
-    <p>Skontaktuj się mailowo lub przez social media:</p>
-    <div class="socials">
-      <a href="mailto:grzegorz.rozwadowski.2010@gmail.com">📧 E-mail</a>
-      <a href="https://instagram.com/grzehula1234" target="_blank">📷 Instagram</a>
-      <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1" target="_blank">💻 GitHub</a>
-    </div>
-
-    <h2>Sklep</h2>
+  <section id="products">
+    <h2>Produkty</h2>
     <div class="products">
-
       <div class="product">
-        <img src="zvs.jpg" alt="ZVS Driver">
-        <h3>ZVS Driver</h3>
-        <p><strong>Ocena:</strong> ⭐ 4.73 / 5</p>
-        <p>Super mocny układ do zasilania transformatorów. Pali stal!</p>
-        <ul>
-          <li>„Użyłem do tostera. Teraz mam mikrofalówkę.” – <em>Marek</em></li>
-          <li>„Działa tak dobrze, że sąsiad się wyprowadził.” – <em>KubaKondensator</em></li>
-        </ul>
-        <button onclick="alert('Zakup zakończony sukcesem! 😄')">Kup teraz</button>
+        <img src="licznik.jpg" alt="Licznik" />
+        <div class="product-content">
+          <h3>Licznik jonizacyjny</h3>
+          <div class="stars">★★★★☆ (4.5)</div>
+          <div class="review">Super precyzyjny i prosty w obsłudze.</div>
+        </div>
       </div>
-
       <div class="product">
-        <img src="lampa.png" alt="Lampa rentgenowska V1-0.1/40">
-        <h3>Lampa rentgenowska V1-0.1/40</h3>
-        <p><strong>Ocena:</strong> ⭐ 3.5 / 5</p>
-        <p>Idealna do domowego projektu X-ray (oczywiście tylko hobbystycznie!)</p>
-        <ul>
-          <li>„Widziałem przez ścianę. Niestety swoją.” – <em>RadekP</em></li>
-          <li>„Trochę grzeje, ale przynajmniej nie marznę zimą.” – <em>LampArt</em></li>
-        </ul>
-        <button onclick="alert('Zakup zakończony sukcesem! 😆')">Kup teraz</button>
+        <img src="lampa.png" alt="Lampa rentgenowska" />
+        <div class="product-content">
+          <h3>Lampa rentgenowska</h3>
+          <div class="stars">★★★☆☆ (3.0)</div>
+          <div class="review">Działa, ale wymaga trochę wprawy przy obsłudze.</div>
+        </div>
       </div>
-
       <div class="product">
-        <img src="licznik.jpg" alt="Licznik Geigera FNIRSI GC-01">
-        <h3>Licznik Geigera FNIRSI GC-01</h3>
-        <p><strong>Ocena:</strong> ⭐ 4.91 / 5</p>
-        <p>Pomiar promieniowania nigdy nie był tak stylowy.</p>
-        <ul>
-          <li>„Zaczął pikać przy moim zegarku. Teraz śpię z latarką pod poduszką.” – <em>NuklearnaBaba</em></li>
-          <li>„Najlepszy detektor od czasu, gdy teściowa weszła do kuchni.” – <em>Andrzej86</em></li>
-        </ul>
-        <button onclick="alert('Zakup zakończony sukcesem! 😅')">Kup teraz</button>
+        <img src="zvs.jpg" alt="Układ ZVS" />
+        <div class="product-content">
+          <h3>Układ ZVS</h3>
+          <div class="stars">★★★★★ (5.0)</div>
+          <div class="review">Najlepszy układ do wysokiego napięcia, jaki miałem!</div>
+        </div>
       </div>
-
-    </div>
-  </div>
-
-  <footer>
-    &copy; 2025 Grzehula. Wszystkie prawa zastrzeżone.
-  </footer>
-
-</body>
-</html>
