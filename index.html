@@ -300,37 +300,58 @@
 
   <section id="player-section">
   <h1 style="text-align: center;">Minimalistyczny Odtwarzacz Muzyki</h1>
-    <style>
-  .playlist li {
-    background-color: #007bff; /* niebieski */
-    color: white;
-    padding: 10px;
-    margin: 5px 0;
-    list-style: none;
-    border-radius: 8px;
-    cursor: pointer;
-    text-align: center;
-    transition: background-color 0.2s;
-  }
+  
+  <style>
+    .playlist {
+      list-style: none;
+      padding: 0;
+      width: 100%;
+    }
 
-  .playlist li:hover {
-    background-color: #0056b3; /* ciemniejszy niebieski */
-  }
+    .playlist li {
+      background-color: #007bff; /* niebieski */
+      color: white;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 8px;
+      cursor: pointer;
+      text-align: center;
+      transition: background-color 0.2s;
+    }
 
-  .playlist li.active {
-    background-color: #28a745; /* zielony dla aktywnego */
-  }
-</style>
+    .playlist li:hover {
+      background-color: #0056b3; /* ciemniejszy niebieski */
+    }
 
-  <div class="player" style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 20px auto; max-width: 400px;">
-    <ul class="playlist" id="playlist" style="list-style: none; padding: 0; width: 100%;">
-      <li data-src="1.mp3" style="padding: 10px; background: #f0f0f0; margin-bottom: 5px; text-align: center; border-radius: 5px; cursor: pointer;">1. Znek Martyniuk-Mandacik1</li>
-      <li data-src="2.mp3" style="padding: 10px; background: #f0f0f0; margin-bottom: 5px; text-align: center; border-radius: 5px; cursor: pointer;">2. Yugopolis_Sługi za Szlugi</li>
-      <li data-src="3.mp3" style="padding: 10px; background: #f0f0f0; margin-bottom: 5px; text-align: center; border-radius: 5px; cursor: pointer;">3. Ace of Base-Happy Nation</li>
-      <li data-src="4.mp3" style="padding: 10px; background: #f0f0f0; margin-bottom: 5px; text-align: center; border-radius: 5px; cursor: pointer;">4. a-ha Take on me</li>
-      <li data-src="5.mp3" style="padding: 10px; background: #f0f0f0; margin-bottom: 5px; text-align: center; border-radius: 5px; cursor: pointer;">5. Eltron Britt-Uranium Fever</li>
+    .playlist li.active {
+      background-color: #28a745; /* zielony dla aktywnego */
+    }
+
+    .player {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 20px auto;
+      max-width: 400px;
+    }
+
+    audio {
+      width: 100%;
+      margin-top: 10px;
+    }
+  </style>
+
+  <div class="player">
+    <ul class="playlist" id="playlist">
+      <li data-src="1.mp3">1. Zenek Martyniuk – Mandacik1</li>
+      <li data-src="2.mp3">2. Yugopolis – Sługi za Szlugi</li>
+      <li data-src="3.mp3">3. Ace of Base – Happy Nation</li>
+      <li data-src="4.mp3">4. a-ha – Take on Me</li>
+      <li data-src="5.mp3">5. Elton Britt – Uranium Fever</li>
     </ul>
-    <audio controls id="audioPlayer" preload="metadata" style="width: 100%; margin-top: 10px;">
+
+    <audio controls id="audioPlayer" preload="metadata">
       Twoja przeglądarka nie wspiera elementu audio.
     </audio>
   </div>
@@ -338,12 +359,13 @@
   <script>
     const playlist = document.getElementById('playlist');
     const audioPlayer = document.getElementById('audioPlayer');
-    let currentIndex = 0;
     const tracks = playlist.querySelectorAll('li');
+    let currentIndex = 0;
 
     function loadTrack(index) {
       const selected = tracks[index];
       if (!selected) return;
+
       tracks.forEach(li => li.classList.remove('active'));
       selected.classList.add('active');
 
@@ -368,6 +390,7 @@
     loadTrack(0);
   </script>
 </section>
+
 
 
     <section id="mapa">
