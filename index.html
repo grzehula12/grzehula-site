@@ -3,697 +3,408 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Grzehula Store - Zielono-carny Styl 2025</title>
-<link rel="icon" href="favicon.ico" type="image/x-icon" />
+<title>Grzehula Store – O nas i śmieszne rzeczy</title>
 <style>
-  /* Reset i podstawy */
   * {
     box-sizing: border-box;
     margin: 0; padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
-  html {
+  body {
+    background: #0a0a1a;
+    color: #cde9ff;
+    line-height: 1.5;
+    min-height: 100vh;
     scroll-behavior: smooth;
   }
-  body {
-    background: #0b1300;
-    color: #c0f281;
-    line-height: 1.6;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
   a {
-    color: #7fff00;
+    color: #00e5ff;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.3s;
   }
   a:hover, a:focus {
-    color: #aaff00;
+    color: #00b8d9;
     text-decoration: underline;
     outline: none;
   }
-
-  /* CONTAINER */
   #container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px 120px;
+    max-width: 900px;
+    margin: 0 auto 80px;
+    padding: 0 15px;
   }
-
-  /* HEADER */
   header {
-    background: linear-gradient(90deg, #7fff00 0%, #00ff66 100%);
-    color: #0b1300;
+    background: linear-gradient(90deg, #00e5ff, #006bb3);
+    color: #0a0a1a;
+    padding: 80px 20px 60px;
+    font-size: 3.8rem;
     font-weight: 900;
-    font-size: clamp(3rem, 8vw, 5rem);
     text-align: center;
-    padding: 100px 15px 90px;
     letter-spacing: 3px;
-    text-shadow:
-      0 0 10px #aaff00,
-      0 0 25px #7fff00,
-      0 0 40px #4cff00,
-      0 0 70px #00ff00;
-    user-select: none;
+    text-shadow: 0 0 15px #00e5ffaa;
     border-radius: 0 0 50% 50% / 20% 20% 80% 80%;
-    margin-bottom: 70px;
-    position: relative;
-    overflow: hidden;
-  }
-  /* Animowany neonowy efekt pulsowania */
-  @keyframes neonPulse {
-    0%, 100% {
-      text-shadow:
-        0 0 10px #aaff00,
-        0 0 25px #7fff00,
-        0 0 40px #4cff00,
-        0 0 70px #00ff00;
-      color: #c0f281;
-    }
-    50% {
-      text-shadow:
-        0 0 20px #ccff33,
-        0 0 40px #bbff00,
-        0 0 60px #99ff00,
-        0 0 90px #77ff00;
-      color: #ddff55;
-    }
-  }
-  header span {
-    animation: neonPulse 3s ease-in-out infinite;
-    display: inline-block;
-  }
-
-  /* NAVBAR */
-  nav {
-    background: #111a00;
+    margin-bottom: 40px;
     position: sticky;
     top: 0;
+    z-index: 1000;
+    box-shadow: 0 6px 30px #00e5ffaa;
+  }
+  nav {
+    background: #111133;
+    position: sticky;
+    top: 150px;
     z-index: 9999;
-    box-shadow: 0 3px 15px rgba(0,255,0,0.6);
+    box-shadow: 0 3px 20px #007acccc;
+    border-radius: 18px;
+    margin-bottom: 50px;
   }
   nav ul {
     display: flex;
     justify-content: center;
     list-style: none;
-    padding: 16px 0;
-    gap: 3rem;
-    user-select: none;
+    padding: 12px 0;
+    gap: 2rem;
     flex-wrap: wrap;
   }
   nav ul li a {
     font-weight: 700;
-    font-size: 1.25rem;
-    padding: 8px 18px;
+    font-size: 1.2rem;
+    color: #a4e9ff;
+    padding: 8px 20px;
     border-radius: 12px;
-    background: #00440022;
-    color: #b9f69b;
-    box-shadow: 0 0 5px #00990044;
-    transition:
-      background-color 0.4s,
-      color 0.4s,
-      box-shadow 0.4s,
-      transform 0.3s;
+    box-shadow: inset 0 0 0 2px #00e5ff;
     display: inline-block;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
   }
-  nav ul li a:hover,
-  nav ul li a:focus,
-  nav ul li a.active {
-    background-color: #55ff22;
-    color: #0b1300;
-    box-shadow: 0 0 20px #55ff22;
-    transform: scale(1.1);
+  nav ul li a:hover, nav ul li a:focus {
+    background-color: #00e5ff;
+    color: #0a0a1a;
+    box-shadow: 0 0 15px #00e5ff;
     outline: none;
   }
-
-  /* SEKCJE */
   section {
-    background: #132200cc;
-    margin-bottom: 70px;
-    padding: 50px 35px;
-    border-radius: 20px;
-    box-shadow:
-      0 8px 25px #44ff0055;
-    scroll-margin-top: 100px;
-    color: #d3f4a9;
-    position: relative;
+    background: #111133;
+    margin-bottom: 60px;
+    padding: 40px 30px;
+    border-radius: 18px;
+    box-shadow: 0 8px 24px #005eaa80;
+    scroll-margin-top: 120px;
   }
   section h2 {
-    font-size: 3rem;
-    margin-bottom: 30px;
-    color: #aaff00;
-    border-bottom: 4px solid #7fff00;
-    padding-bottom: 12px;
+    font-size: 2.8rem;
+    margin-bottom: 25px;
+    color: #00e5ff;
+    border-bottom: 3px solid #00a8d4;
+    padding-bottom: 8px;
     user-select: none;
-    text-shadow: 0 0 6px #bbff00;
+    text-shadow: 0 0 12px #00e5ffaa;
   }
-  section p {
-    font-size: 1.2rem;
-    max-width: 900px;
-    margin-bottom: 20px;
-    color: #cceeb1dd;
+  section p, section li {
+    font-size: 1.1rem;
+    color: #b7e4ffcc;
+    max-width: 860px;
   }
-
-  /* O NAS */
-  #onas p {
-    max-width: 850px;
+  .fun-stories ul {
+    list-style: none;
+    padding-left: 0;
   }
-
-  /* OFERTA */
-  #oferta .offer-list {
+  .fun-stories li {
+    position: relative;
+    padding-left: 36px;
+    margin-bottom: 18px;
+  }
+  .fun-stories li::before {
+    content: "💡";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1.5rem;
+    line-height: 1;
+    user-select: none;
+    animation: pulseEmoji 3s ease-in-out infinite;
+  }
+  @keyframes pulseEmoji {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+  }
+  .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
     gap: 25px;
-  }
-  .offer-card {
-    background: #1a3300cc;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 6px 20px #55ff2288;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    user-select: none;
-    transition: transform 0.3s ease, box-shadow 0.4s ease;
-    cursor: default;
-  }
-  .offer-card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 15px 30px #88ff44cc;
-  }
-  .offer-card h3 {
-    margin-bottom: 12px;
-    color: #bbee44;
-    font-size: 1.7rem;
-  }
-  .offer-card p {
-    flex-grow: 1;
-  }
-  .offer-price {
-    margin-top: 15px;
-    font-weight: 700;
-    font-size: 1.3rem;
-    color: #ccff77;
-    text-align: right;
-    user-select: text;
-  }
-
-  /* OPINIE */
-  .reviews {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: space-between;
-  }
-  .review-card {
-    background: #0a1a00cc;
-    border-radius: 15px;
-    padding: 30px 25px;
-    box-shadow: 0 8px 25px #66ff0088;
-    flex: 1 1 calc(33% - 25px);
-    min-width: 280px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: transform 0.3s ease, box-shadow 0.4s ease;
-    cursor: default;
-    user-select: none;
-  }
-  .review-card:hover {
-    transform: translateY(-15px);
-    box-shadow: 0 15px 35px #99ff11cc;
-  }
-  .review-text {
-    font-style: italic;
-    font-size: 1.15rem;
-    color: #cceeb1dd;
-    margin-bottom: 20px;
-    flex-grow: 1;
-  }
-  .review-author {
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: #aaff00;
-    text-align: right;
-    user-select: text;
-  }
-
-  /* FAQ */
-  .faq-list {
     max-width: 900px;
+    margin: 0 auto;
+  }
+  .gallery img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px #007accaa;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    user-select: none;
+  }
+  .gallery img:hover {
+    transform: scale(1.07);
+    box-shadow: 0 12px 30px #00e5ffdd;
+  }
+  .faq-list {
+    max-width: 860px;
     margin: 0 auto;
   }
   .faq-item {
     margin-bottom: 25px;
-    border-radius: 20px;
-    background: #0a2a00cc;
-    box-shadow: 0 5px 20px #44ff0055;
+    border-radius: 14px;
+    background: #0e0e2a;
+    box-shadow: 0 7px 20px #005eaa50;
     overflow: hidden;
-    user-select: none;
+    transition: background-color 0.3s ease;
   }
   .faq-question {
-    padding: 20px 30px;
+    padding: 20px 28px;
     cursor: pointer;
     font-weight: 700;
-    font-size: 1.45rem;
-    color: #7fff00;
+    font-size: 1.3rem;
+    color: #00e5ff;
     position: relative;
-    transition: background-color 0.4s, color 0.4s;
     user-select: none;
+    border-left: 6px solid transparent;
+    transition: background-color 0.3s, color 0.3s, border-left-color 0.3s;
   }
-  .faq-question:hover,
-  .faq-item.open .faq-question {
-    background: #55ff22;
-    color: #0b1300;
+  .faq-question:hover {
+    background: #00a8d4;
+    color: #0a0a1a;
+    border-left-color: #0077aa;
   }
   .faq-question::after {
     content: '+';
     font-weight: 900;
-    font-size: 2.4rem;
+    font-size: 2rem;
     position: absolute;
-    right: 30px;
+    right: 28px;
     top: 50%;
     transform: translateY(-50%);
-    transition: transform 0.3s ease;
-    color: #99ff33;
+    color: #00e5ff;
+    transition: transform 0.3s;
   }
   .faq-item.open .faq-question::after {
     content: '−';
-    color: #114400;
     transform: translateY(-50%) rotate(180deg);
+    color: #0077aa;
   }
   .faq-answer {
     max-height: 0;
-    padding: 0 30px;
-    color: #b2e366dd;
-    font-size: 1.2rem;
-    line-height: 1.6;
+    padding: 0 28px;
+    color: #aad8ffcc;
+    font-size: 1rem;
+    line-height: 1.5;
     overflow: hidden;
     transition: max-height 0.5s ease, padding 0.5s ease;
+    background: #0a0a1a;
+    border-top: 1px solid #0077aa;
     user-select: text;
   }
   .faq-item.open .faq-answer {
-    padding: 20px 30px;
-    max-height: 900px;
+    padding: 18px 28px;
+    max-height: 400px;
   }
-
-  /* GALERIA */
-  #galeria {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
-    gap: 18px;
-  }
-  .gallery-item {
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px #77ff2288;
-    cursor: pointer;
-    position: relative;
-    transition: transform 0.3s ease, box-shadow 0.4s ease;
-  }
-  .gallery-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 12px 35px #aaff44cc;
-  }
-  .gallery-item img {
-    width: 100%;
-    display: block;
-    object-fit: cover;
-    height: 150px;
-    user-select: none;
-  }
-  .gallery-caption {
-    background: rgba(0, 120, 0, 0.75);
-    color: #c0f281;
-    padding: 12px 15px;
-    font-weight: 700;
-    font-size: 1.1rem;
-    text-align: center;
-    user-select: text;
-  }
-
-  /* MAPA */
-  #map iframe {
-    width: 100%;
-    height: 350px;
-    border-radius: 20px;
-    border: none;
-    box-shadow: 0 10px 30px #77ff2288;
-    user-select: none;
-  }
-
-  /* KONTAKT */
   form {
-    max-width: 650px;
+    max-width: 600px;
     margin: 0 auto;
-    background: #0a1a0022;
-    padding: 40px 35px;
-    border-radius: 25px;
-    box-shadow: 0 10px 25px #55ff2288;
-    color: #d4f7a6;
-    user-select: none;
+    background: #111144;
+    padding: 40px 30px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px #005eaa80;
   }
   form h3 {
-    color: #aaff00;
-    font-size: 2.4rem;
-    margin-bottom: 30px;
+    color: #00e5ff;
+    font-size: 2.2rem;
+    margin-bottom: 35px;
+    letter-spacing: 1px;
     user-select: none;
-    text-shadow: 0 0 6px #bbff00;
   }
-  form label {
+  label {
     display: block;
     margin-bottom: 10px;
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: #cceeb1cc;
+    font-weight: 600;
+    color: #aad8ffcc;
     user-select: none;
   }
-  form input, form textarea {
+  input, textarea {
     width: 100%;
-    padding: 14px 18px;
+    padding: 14px 16px;
     margin-bottom: 25px;
-    border-radius: 15px;
+    border-radius: 12px;
     border: none;
-    font-size: 1.15rem;
-    background: #0b1300cc;
-    color: #cceeb1dd;
-    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+    font-size: 1rem;
+    background: #0a0a1a;
+    color: #cde9ff;
+    transition: background-color 0.3s, box-shadow 0.3s;
     resize: vertical;
     user-select: text;
   }
-  form input:focus, form textarea:focus {
-    background-color: #7fff00cc;
-    color: #0b1300;
+  input:focus, textarea:focus {
+    background-color: #00a8d4;
+    color: #0a0a1a;
     outline: none;
-    box-shadow: 0 0 15px #77ff00;
+    box-shadow: 0 0 15px #00e5ff;
   }
-  form button {
-    background: #7fff00;
-    color: #0b1300;
+  button {
+    background: #00e5ff;
+    color: #0a0a1a;
     font-weight: 700;
     font-size: 1.3rem;
-    padding: 18px 40px;
+    padding: 14px 38px;
     border: none;
-    border-radius: 20px;
+    border-radius: 15px;
     cursor: pointer;
-    box-shadow: 0 10px 30px #7fff0055;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 25px #0077aa;
+    transition: background-color 0.3s, box-shadow 0.3s;
     user-select: none;
   }
-  form button:hover, form button:focus {
-    background-color: #aaff33;
-    box-shadow: 0 12px 35px #aaff0055;
+  button:hover, button:focus {
+    background-color: #0077aa;
+    box-shadow: 0 10px 30px #00e5ff;
     outline: none;
   }
   #form-response {
-    font-weight: 700;
-    font-size: 1.3rem;
+    margin-top: 18px;
     text-align: center;
-    margin-top: 20px;
-    user-select: none;
+    font-size: 1.1rem;
+    font-weight: 700;
+    min-height: 24px;
+    user-select: text;
   }
-
-  /* STOPKA */
   footer {
     text-align: center;
-    padding: 30px 15px;
-    color: #445522cc;
+    padding: 25px 15px;
+    color: #446688;
     font-size: 1rem;
     user-select: none;
-    border-top: 1px solid #44662255;
-    margin-top: 100px;
-    font-weight: 600;
-    text-shadow: 0 0 3px #77ff0033;
+    border-top: 1px solid #002244;
+    margin-top: 60px;
+    letter-spacing: 1px;
   }
-
-  /* PRZYCISK DO GÓRY */
-  #back-to-top {
+  #toTopBtn {
     position: fixed;
-    right: 20px;
-    bottom: 40px;
-    background: #7fff00;
-    color: #0b1300;
-    padding: 15px 18px;
-    font-size: 1.6rem;
+    bottom: 35px;
+    right: 35px;
+    background: #00e5ff;
+    border: none;
+    padding: 14px 20px;
     border-radius: 50%;
+    box-shadow: 0 0 20px #0077aa;
     cursor: pointer;
-    box-shadow: 0 0 15px #7fff00cc;
+    font-size: 1.6rem;
+    color: #0a0a1a;
     user-select: none;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    z-index: 10000;
     display: none;
-    z-index: 99999;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
   }
-  #back-to-top:hover {
-    background-color: #aaff33;
-    box-shadow: 0 0 25px #aaff0055;
-  }
-
-  /* RESPONSYWNOŚĆ */
-  @media (max-width: 1000px) {
-    nav ul {
-      gap: 1.8rem;
-    }
-    section {
-      padding: 40px 25px;
-      margin-bottom: 60px;
-    }
-    .reviews {
-      flex-direction: column;
-      gap: 40px;
-    }
-    .review-card {
-      flex: none;
-      width: 100%;
-    }
-    .offer-card {
-      flex: none;
-      width: 100%;
-    }
+  #toTopBtn:hover {
+    background-color: #0077aa;
+    box-shadow: 0 0 35px #00e5ff;
+    outline: none;
   }
   @media (max-width: 600px) {
     header {
-      font-size: clamp(2rem, 10vw, 3rem);
-      padding: 70px 15px 60px;
+      font-size: 2.8rem;
+      padding: 60px 15px 40px;
       border-radius: 0 0 60% 60% / 30% 30% 70% 70%;
     }
     nav ul {
-      flex-wrap: wrap;
-      gap: 1.1rem;
+      gap: 1rem;
     }
     nav ul li a {
       font-size: 1rem;
-      padding: 6px 14px;
+      padding: 6px 12px;
+    }
+    section {
+      padding: 30px 20px;
+      margin-bottom: 40px;
     }
     form {
-      padding: 30px 25px;
+      padding: 30px 20px;
     }
-    .gallery-item img {
-      height: 120px;
-    }
-  }
-
-  /* ANIMACJE PRZY PRZEWIJANIU (fade-in, slide-up) */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(25px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-  }
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
   }
 </style>
 </head>
 <body>
 
-<header aria-label="Nagłówek strony">
-  <span>Witaj na Grzehula Store</span>
-</header>
+<header>Grzehula Store<br>O nas i śmieszne rzeczy 🌐🔵</header>
 
 <nav aria-label="Główne menu nawigacyjne">
   <ul role="menubar">
-    <li role="none"><a role="menuitem" href="#onas" tabindex="0" class="nav-link">O nas</a></li>
-    <li role="none"><a role="menuitem" href="#oferta" tabindex="0" class="nav-link">Oferta</a></li>
-    <li role="none"><a role="menuitem" href="#opinie" tabindex="0" class="nav-link">Opinie</a></li>
-    <li role="none"><a role="menuitem" href="#faq" tabindex="0" class="nav-link">FAQ</a></li>
-    <li role="none"><a role="menuitem" href="#galeria" tabindex="0" class="nav-link">Galeria</a></li>
-    <li role="none"><a role="menuitem" href="#map" tabindex="0" class="nav-link">Lokalizacja</a></li>
-    <li role="none"><a role="menuitem" href="#kontakt" tabindex="0" class="nav-link">Kontakt</a></li>
+    <li role="none"><a role="menuitem" href="#onas" tabindex="0">O nas</a></li>
+    <li role="none"><a role="menuitem" href="#fun" tabindex="0">Zabawne historie</a></li>
+    <li role="none"><a role="menuitem" href="#gallery" tabindex="0">Galeria</a></li>
+    <li role="none"><a role="menuitem" href="#faq" tabindex="0">FAQ</a></li>
+    <li role="none"><a role="menuitem" href="#kontakt" tabindex="0">Kontakt</a></li>
   </ul>
 </nav>
 
 <div id="container">
 
-  <!-- O NAS -->
-  <section id="onas" tabindex="0" aria-labelledby="onas-title" role="region" class="fade-in">
-    <h2 id="onas-title">O nas</h2>
-    <p>
-      Jesteśmy pasjonatami technologii i nowoczesnego designu. Nasz sklep oferuje produkty najwyższej jakości,
-      dostosowane do potrzeb zarówno początkujących, jak i zaawansowanych użytkowników.
-      Wierzymy, że technologia powinna być dostępna i przyjazna dla każdego.
-    </p>
-    <p>
-      Od lat budujemy zaufanie naszych klientów dzięki profesjonalnej obsłudze i ciągłemu rozwojowi.
-      Zapraszamy do zapoznania się z naszą ofertą i dołączenia do grona zadowolonych użytkowników.
-    </p>
+  <section id="onas" tabindex="0" aria-labelledby="onas-title" role="region">
+    <h2 id="onas-title">Kim jesteśmy?</h2>
+    <p>Ekipa fanów tech, kodu i dobrej zabawy. Bez lania wody — po prostu robimy to, co kochamy, i lubimy się śmiać.</p>
   </section>
 
-  <!-- OFERTA -->
-  <section id="oferta" tabindex="0" aria-labelledby="oferta-title" role="region" class="fade-in">
-    <h2 id="oferta-title">Oferta</h2>
-    <div class="offer-list">
-      <article class="offer-card" tabindex="0" aria-label="Oferta: Transformator wysokiego napięcia">
-        <h3>Transformator wysokiego napięcia</h3>
-        <p>Najwyższej klasy transformator do Twoich projektów elektroniki wysokiego napięcia. Idealny do eksperymentów i nauki.</p>
-        <p class="offer-price">Cena: 350 zł</p>
-      </article>
-      <article class="offer-card" tabindex="0" aria-label="Oferta: Moduł Arduino UNO">
-        <h3>Moduł Arduino UNO</h3>
-        <p>Klasyczny mikrokontroler dla wszystkich, którzy chcą rozpocząć swoją przygodę z elektroniką i programowaniem.</p>
-        <p class="offer-price">Cena: 80 zł</p>
-      </article>
-      <article class="offer-card" tabindex="0" aria-label="Oferta: Zestaw czujników jonizacyjnych">
-        <h3>Zestaw czujników jonizacyjnych</h3>
-        <p>Kompletny zestaw czujników do detekcji promieniowania jonizującego – niezawodne i łatwe w użyciu.</p>
-        <p class="offer-price">Cena: 100 zł</p>
-      </article>
-      <article class="offer-card" tabindex="0" aria-label="Oferta: Lampa rentgenowska V1-0.1/40">
-        <h3>Lampa rentgenowska V1-0.1/40</h3>
-        <p>Profesjonalna lampa do projektów rentgenowskich, spełniająca najwyższe standardy bezpieczeństwa.</p>
-        <p class="offer-price">Cena: 1200 zł</p>
-      </article>
-      <article class="offer-card" tabindex="0" aria-label="Oferta: Układ ZVS gotowy do użycia">
-        <h3>Układ ZVS gotowy do użycia</h3>
-        <p>Gotowy i przetestowany układ ZVS do Twoich eksperymentów z wysokimi częstotliwościami.</p>
-        <p class="offer-price">Cena: 250 zł</p>
-      </article>
+  <section id="fun" tabindex="0" aria-labelledby="fun-title" role="region" class="fun-stories">
+    <h2 id="fun-title">Zabawne historie</h2>
+    <ul>
+      <li>Arduino zamiast oscyloskopu odtwarzało... Despacito na piezo!</li>
+      <li>Lutowanie ołówkiem skończyło się lekkim pożarem (ups).</li>
+      <li>Lampa rentgenowska nas przeniosła bliżej gwiazd podczas eksperymentu.</li>
+      <li>Kot zyskał status oficjalnego testera kabli — trochę pomaga, trochę psuje.</li>
+      <li>Stara mikrofalówka przemieniła warsztat w dyskotekę. Zielono i głośno!</li>
+    </ul>
+  </section>
+
+  <section id="gallery" tabindex="0" aria-labelledby="gallery-title" role="region">
+    <h2 id="gallery-title">Galeria memów</h2>
+    <div class="gallery" aria-label="Galeria memów">
+      <img src="https://i.imgur.com/Tq4B97g.jpg" alt="Programista i kawa" loading="lazy" />
+      <img src="https://i.imgur.com/TFuN6YA.jpg" alt="Debugowanie" loading="lazy" />
+      <img src="https://i.imgur.com/p7WIEVm.jpg" alt="Elektronik w akcji" loading="lazy" />
+      <img src="https://i.imgur.com/c1ZXy6p.jpg" alt="Kiedy wszystko działa" loading="lazy" />
+      <img src="https://i.imgur.com/UHTqE8d.jpg" alt="Kabel vs kot" loading="lazy" />
     </div>
   </section>
 
-  <!-- OPINIE -->
-  <section id="opinie" tabindex="0" aria-labelledby="opinie-title" role="region" class="fade-in">
-    <h2 id="opinie-title">Opinie naszych klientów</h2>
-    <div class="reviews">
-      <article class="review-card" tabindex="0" aria-label="Opinia Jana">
-        <p class="review-text">"Niesamowite miejsce! Strona działa szybko i wygląda świetnie. Polecam każdemu, kto kocha nowoczesność."</p>
-        <p class="review-author">– Jan Kowalski</p>
-      </article>
-      <article class="review-card" tabindex="0" aria-label="Opinia Agnieszki">
-        <p class="review-text">"Profesjonalna obsługa i błyskawiczna pomoc. Wspaniała ekipa!"</p>
-        <p class="review-author">– Agnieszka Nowak</p>
-      </article>
-      <article class="review-card" tabindex="0" aria-label="Opinia Marcina">
-        <p class="review-text">"Dzięki nim mój projekt wypalił. Mega polecam!"</p>
-        <p class="review-author">– Marcin Wróbel</p>
-      </article>
-      <article class="review-card" tabindex="0" aria-label="Opinia Zosi">
-        <p class="review-text">"Estetyka i funkcjonalność na najwyższym poziomie."</p>
-        <p class="review-author">– Zofia Malinowska</p>
-      </article>
-      <article class="review-card" tabindex="0" aria-label="Opinia Piotra">
-        <p class="review-text">"Szybko, sprawnie i nowocześnie. Polecam każdemu tech-geekowi."</p>
-        <p class="review-author">– Piotr Zieliński</p>
-      </article>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" tabindex="0" aria-labelledby="faq-title" role="region" class="fade-in">
-    <h2 id="faq-title">Najczęściej zadawane pytania (FAQ)</h2>
+  <section id="faq" tabindex="0" aria-labelledby="faq-title" role="region">
+    <h2 id="faq-title">FAQ</h2>
     <div class="faq-list" role="list">
       <div class="faq-item" role="listitem">
-        <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq1" id="q1">Czy mogę się z Wami skontaktować?</div>
-        <div class="faq-answer" id="faq1" role="region" aria-labelledby="q1" hidden>
-          Tak, zawsze możesz wysłać wiadomość przez formularz kontaktowy lub e-mail.
+        <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq1" id="faq1label">Czy naprawdę potraficie robić te rzeczy?</div>
+        <div class="faq-answer" id="faq1" role="region" aria-labelledby="faq1label" hidden>
+          <p>Tak, ale często więcej śmiesznych wpadek niż sukcesów.</p>
         </div>
       </div>
       <div class="faq-item" role="listitem">
-        <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq2" id="q2">Czy oferujecie wsparcie techniczne?</div>
-        <div class="faq-answer" id="faq2" role="region" aria-labelledby="q2" hidden>
-          Oczywiście, pomagamy z każdym projektem lub pytaniem.
+        <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq2" id="faq2label">Czy tylko żarty czy też poważne projekty?</div>
+        <div class="faq-answer" id="faq2" role="region" aria-labelledby="faq2label" hidden>
+          <p>Trochę i jedno, i drugie. Śmiech pomaga w pracy!</p>
         </div>
       </div>
       <div class="faq-item" role="listitem">
-        <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq3" id="q3">Czy strona jest responsywna?</div>
-        <div class="faq-answer" id="faq3" role="region" aria-labelledby="q3" hidden>
-          Tak, działa świetnie na wszystkich urządzeniach — telefonach, tabletach i komputerach.
-        </div>
-      </div>
-      <div class="faq-item" role="listitem">
-        <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq4" id="q4">Czy dodajecie nowe funkcje często?</div>
-        <div class="faq-answer" id="faq4" role="region" aria-labelledby="q4" hidden>
-          Tak, stale rozwijamy stronę i dodajemy nowe opcje.
-        </div>
-      </div>
-      <div class="faq-item" role="listitem">
-        <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq5" id="q5">Jak mogę zgłosić sugestię?</div>
-        <div class="faq-answer" id="faq5" role="region" aria-labelledby="q5" hidden>
-          Najprościej przez formularz kontaktowy lub bezpośrednio mailowo.
+        <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq3" id="faq3label">Czy kot może zniszczyć projekt?</div>
+        <div class="faq-answer" id="faq3" role="region" aria-labelledby="faq3label" hidden>
+          <p>Zdecydowanie. Ale trudno się gniewać na takiego pomocnika.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- GALERIA -->
-  <section id="galeria" tabindex="0" aria-labelledby="galeria-title" role="region" class="fade-in">
-    <h2 id="galeria-title">Galeria</h2>
-    <div class="gallery-grid" aria-label="Galeria zdjęć produktów i projektów">
-      <div class="gallery-item" tabindex="0">
-        <img src="https://picsum.photos/id/1015/300/200" alt="Projekt transformatora wysokiego napięcia" />
-        <div class="gallery-caption">Transformator wysokiego napięcia</div>
-      </div>
-      <div class="gallery-item" tabindex="0">
-        <img src="https://picsum.photos/id/1020/300/200" alt="Arduino UNO w użyciu" />
-        <div class="gallery-caption">Arduino UNO</div>
-      </div>
-      <div class="gallery-item" tabindex="0">
-        <img src="https://picsum.photos/id/1035/300/200" alt="Czujniki jonizacyjne" />
-        <div class="gallery-caption">Czujniki jonizacyjne</div>
-      </div>
-      <div class="gallery-item" tabindex="0">
-        <img src="https://picsum.photos/id/1069/300/200" alt="Lampa rentgenowska V1-0.1/40" />
-        <div class="gallery-caption">Lampa rentgenowska</div>
-      </div>
-      <div class="gallery-item" tabindex="0">
-        <img src="https://picsum.photos/id/1049/300/200" alt="Układ ZVS" />
-        <div class="gallery-caption">Układ ZVS</div>
-      </div>
-      <div class="gallery-item" tabindex="0">
-        <img src="https://picsum.photos/id/1052/300/200" alt="Warsztat i elektronika" />
-        <div class="gallery-caption">Warsztat i elektronika</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MAPA -->
-  <section id="map" tabindex="0" aria-label="Mapa z lokalizacją firmy" role="region" class="fade-in">
-    <h2>Nasza lokalizacja</h2>
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2448.338154708785!2d21.012228415877217!3d52.22967597978814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471eccf557a9eb55%3A0xa5e66b11ef1eb223!2sWarsaw%2C%20Poland!5e0!3m2!1spl!2spl!4v1680000000000!5m2!1spl!2spl"
-      width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-      title="Mapa Warszawy"></iframe>
-  </section>
-
-  <!-- KONTAKT -->
-  <section id="kontakt" tabindex="0" aria-labelledby="kontakt-title" role="region" class="fade-in">
+  <section id="kontakt" tabindex="0" aria-labelledby="kontakt-title" role="region">
     <h2 id="kontakt-title">Kontakt</h2>
-    <form id="contact-form" aria-label="Formularz kontaktowy">
-      <h3>Napisz do nas</h3>
-
-      <label for="name">Imię i nazwisko</label>
-      <input type="text" id="name" name="name" placeholder="Jan Kowalski" required aria-required="true" />
-
-      <label for="email">Adres e-mail</label>
-      <input type="email" id="email" name="email" placeholder="jan@example.com" required aria-required="true" />
-
-      <label for="message">Wiadomość</label>
-      <textarea id="message" name="message" rows="5" placeholder="Twoja wiadomość..." required aria-required="true"></textarea>
-
-      <button type="submit" aria-label="Wyślij formularz kontaktowy">Wyślij</button>
+    <form id="contactForm" aria-label="Formularz kontaktowy">
+      <h3>Napisz do nas!</h3>
+      <label for="name">Imię:</label>
+      <input type="text" id="name" name="name" required placeholder="Twoje imię" />
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required placeholder="twój@email.pl" />
+      <label for="message">Wiadomość:</label>
+      <textarea id="message" name="message" rows="5" required placeholder="Napisz coś"></textarea>
+      <button type="submit" aria-label="Wyślij wiadomość">Wyślij</button>
       <div id="form-response" role="alert" aria-live="polite"></div>
     </form>
   </section>
@@ -701,95 +412,74 @@
 </div>
 
 <footer>
-  &copy; 2025 Grzehula Store – Wszystkie prawa zastrzeżone
+  &copy; 2025 Grzehula Store — Niebieski neon i dobry humor 💙
 </footer>
 
-<button id="back-to-top" aria-label="Przewiń do góry strony" title="Do góry">⬆</button>
+<button id="toTopBtn" aria-label="Przewiń do góry" title="Do góry">↑</button>
 
 <script>
-  // Podświetlanie aktywnego linku w menu podczas scrolla
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('nav ul li a.nav-link');
-
-  function activateMenu() {
-    let scrollPos = window.scrollY + window.innerHeight / 3;
-    sections.forEach(section => {
-      if(scrollPos > section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
-        navLinks.forEach(link => link.classList.remove('active'));
-        let activeLink = document.querySelector(`nav ul li a[href="#${section.id}"]`);
-        if(activeLink) activeLink.classList.add('active');
-      }
-    });
-  }
-  window.addEventListener('scroll', activateMenu);
-  activateMenu();
-
   // FAQ toggle
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => {
-    const question = item.querySelector('.faq-question');
-    question.addEventListener('click', () => toggleFaq(item));
-    question.addEventListener('keypress', e => {
-      if(e.key === 'Enter' || e.key === ' ') {
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const answer = q.nextElementSibling;
+      const expanded = q.getAttribute('aria-expanded') === 'true';
+
+      if (expanded) {
+        item.classList.remove('open');
+        q.setAttribute('aria-expanded', 'false');
+        answer.hidden = true;
+      } else {
+        item.classList.add('open');
+        q.setAttribute('aria-expanded', 'true');
+        answer.hidden = false;
+      }
+    });
+    q.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        toggleFaq(item);
+        q.click();
       }
     });
   });
 
-  function toggleFaq(item) {
-    const isOpen = item.classList.contains('open');
-    faqItems.forEach(i => {
-      i.classList.remove('open');
-      i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-      i.querySelector('.faq-answer').hidden = true;
-    });
-    if(!isOpen) {
-      item.classList.add('open');
-      item.querySelector('.faq-question').setAttribute('aria-expanded', 'true');
-      item.querySelector('.faq-answer').hidden = false;
+  // Scroll to top button
+  const toTopBtn = document.getElementById('toTopBtn');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      toTopBtn.style.display = 'block';
+    } else {
+      toTopBtn.style.display = 'none';
     }
-  }
-
-  // Animacja fade-in przy przewijaniu
-  const faders = document.querySelectorAll('.fade-in');
-  const appearOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -80px 0px"
-  };
-  const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-    entries.forEach(entry => {
-      if(!entry.isIntersecting) return;
-      entry.target.classList.add('visible');
-      appearOnScroll.unobserve(entry.target);
-    });
-  }, appearOptions);
-
-  faders.forEach(fader => {
-    appearOnScroll.observe(fader);
+  });
+  toTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  // Formularz kontaktowy - symulacja wysyłki
-  const form = document.getElementById('contact-form');
-  const responseBox = document.getElementById('form-response');
-
+  // Form handling (mock)
+  const form = document.getElementById('contactForm');
+  const responseDiv = document.getElementById('form-response');
   form.addEventListener('submit', e => {
     e.preventDefault();
-    responseBox.textContent = "Wysyłam...";
-    setTimeout(() => {
-      responseBox.textContent = "Dziękujemy za wiadomość! Skontaktujemy się z Tobą wkrótce.";
-      form.reset();
-    }, 1800);
-  });
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
 
-  // Przycisk do góry
-  const backToTop = document.getElementById('back-to-top');
-  window.addEventListener('scroll', () => {
-    if(window.scrollY > 400) backToTop.style.display = 'block';
-    else backToTop.style.display = 'none';
-  });
-  backToTop.addEventListener('click', () => {
-    window.scrollTo({top: 0, behavior: 'smooth'});
+    if (!name || !email || !message) {
+      responseDiv.textContent = 'Wypełnij wszystkie pola!';
+      responseDiv.style.color = '#ff4d4d';
+      return;
+    }
+    if (!email.includes('@') || !email.includes('.')) {
+      responseDiv.textContent = 'Podaj poprawny email!';
+      responseDiv.style.color = '#ff4d4d';
+      return;
+    }
+
+    responseDiv.textContent = 'Dzięki! Odezwę się jak tylko zapiję kawę ☕';
+    responseDiv.style.color = '#00e5ff';
+
+    form.reset();
   });
 </script>
 
