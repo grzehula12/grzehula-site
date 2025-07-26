@@ -166,6 +166,36 @@
       user-select: none;
     }
 
+    /* Mądrości */
+    #madrosci {
+      background: #001a2b;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 12px #00f2ff;
+      text-align: center;
+      max-width: 600px;
+      margin: 40px auto;
+    }
+
+    #madrosci button {
+      margin-top: 15px;
+      background: #008299;
+    }
+
+    #madrosci button:hover {
+      background: #00eaff;
+      color: #000;
+    }
+
+    #madrosci .tekst-madrosci {
+      margin-top: 20px;
+      font-size: 1.25rem;
+      font-style: italic;
+      color: #7fffd4;
+      min-height: 60px;
+      user-select: none;
+    }
+
     @media (max-width: 600px) {
       nav a {
         padding: 10px;
@@ -182,6 +212,7 @@
   <nav>
     <a href="#opinie">Opinie</a>
     <a href="#faq">FAQ</a>
+    <a href="#madrosci">Mądrości</a>
     <a href="#mapa">Mapa</a>
     <a href="#kontakt">Kontakt</a>
   </nav>
@@ -211,6 +242,13 @@
         <div class="faq-question" tabindex="0">❓ Czy mogę się śmiać?</div>
         <div class="faq-answer" hidden>Musisz 😎</div>
       </div>
+    </section>
+
+    <section id="madrosci" tabindex="0" aria-label="Losowe mądrości">
+      <h2>Mądrości na dziś</h2>
+      <div class="tekst-madrosci">Kliknij przycisk i zobacz mądrość!</div>
+      <button type="button" id="losujMadrosc">Kliknij po mądrość</button>
+      <div style="margin-top: 15px; color: #008080; font-style: italic; user-select:none;">🪨 Ten kamień bez głębszego sensu</div>
     </section>
 
     <section id="mapa">
@@ -264,6 +302,38 @@
           q.click();
         }
       });
+    });
+
+    // Mądrości - lista 20 losowych mądrości
+    const madrosci = [
+      "Nie ma rzeczy niemożliwych, są tylko mniej prawdopodobne.",
+      "Kto rano wstaje, temu Pan Bóg daje... kawę.",
+      "Życie jest jak jazda na rowerze – żeby utrzymać równowagę, musisz się poruszać.",
+      "Śmiech to najtańsza terapia.",
+      "Nie licz kur, zanim nie zniesiesz jajka.",
+      "Cierpliwość jest gorzka, ale jej owoce są słodkie.",
+      "Lepszy wróbel w garści niż gołąb na dachu.",
+      "Wszystko, co dobre, kiedyś się kończy – ale zaczyna się coś jeszcze lepszego.",
+      "Kto się śmieje ostatni, ten nie zrozumiał dowcipu.",
+      "Nie ma głupich pytań, są tylko głupie odpowiedzi.",
+      "Szczęście to jedyna rzecz, która się mnoży, jeśli się ją dzieli.",
+      "Nie wszystko złoto, co się świeci, ale u nas świeci wszystko!",
+      "Dzisiaj jest pierwszy dzień reszty twojego życia – więc zacznij od uśmiechu.",
+      "Zawsze bądź sobą – chyba że możesz być jednorożcem. Wtedy bądź jednorożcem.",
+      "Nie odwlekaj na jutro tego, co możesz zrobić pojutrze.",
+      "Najlepsze rzeczy w życiu są za darmo. A reszta? Za dobrą kawę.",
+      "Prawdziwy mistrz nie spada, tylko testuje grawitację.",
+      "Zgubić coś jest łatwo, ale znaleźć siebie – bezcenne.",
+      "Dobry humor jest jak parasol – nie chroni przed deszczem, ale pomaga przetrwać.",
+      "Każdy dzień to nowa szansa na coś nieprzewidywalnego."
+    ];
+
+    const przycisk = document.getElementById('losujMadrosc');
+    const miejsce = document.querySelector('#madrosci .tekst-madrosci');
+
+    przycisk.addEventListener('click', () => {
+      const indeks = Math.floor(Math.random() * madrosci.length);
+      miejsce.textContent = madrosci[indeks];
     });
   </script>
 
