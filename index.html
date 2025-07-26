@@ -642,19 +642,46 @@
     </div>
   </section>
 
-  <section id="blog">
-    <h2>Blog</h2>
-    <div class="blog-posts">
-      <div class="post">
-        <h4>Jak zrobić licznik Geigera?</h4>
-        <p>Opowiadam krok po kroku, jak zbudować własny licznik Geigera i dlaczego to fajny projekt.</p>
-      </div>
-      <div class="post">
-        <h4>Podstawy elektroniki dla początkujących</h4>
-        <p>Moje rady i triki na start w świecie elektroniki i majsterkowania.</p>
-      </div>
+  <section id="blog" style="max-width:700px; margin:auto; padding:1rem;">
+  <h2>Blog</h2>
+
+  <div class="post" style="border-bottom:1px solid #ddd; padding:1rem 0;">
+    <h3 class="post-title" style="cursor:pointer; user-select:none; font-weight:700;">
+      Jak zbudować licznik Geigera? <span class="toggle-btn" style="color:#007bff; margin-left:0.5rem; font-weight:normal;">[+]</span>
+    </h3>
+    <div class="post-content" style="display:none; margin-top:0.5rem;">
+      <p>Licznik Geigera to urządzenie służące do wykrywania promieniowania jonizującego. Aby go zbudować, potrzebujesz odpowiednich komponentów i podstawowej wiedzy o elektronice.</p>
+      <p>Najpierw zbierz potrzebne elementy: lampa Geigera, układ wzmacniający, zasilacz oraz obwody zabezpieczające. Następnie połącz je zgodnie ze schematem, dbając o bezpieczeństwo podczas pracy z wysokim napięciem.</p>
     </div>
-  </section>
+  </div>
+
+  <div class="post" style="border-bottom:1px solid #ddd; padding:1rem 0;">
+    <h3 class="post-title" style="cursor:pointer; user-select:none; font-weight:700;">
+      Podstawy elektroniki dla początkujących <span class="toggle-btn" style="color:#007bff; margin-left:0.5rem; font-weight:normal;">[+]</span>
+    </h3>
+    <div class="post-content" style="display:none; margin-top:0.5rem;">
+      <p>Elektronika to fascynująca dziedzina, która pozwala zrozumieć działanie prądów, napięć i komponentów elektronicznych.</p>
+      <p>Zacznij od nauki podstawowych elementów, takich jak rezystory, kondensatory i tranzystory. Poznanie ich funkcji i zachowania w obwodach pozwoli Ci tworzyć własne projekty i eksperymenty.</p>
+    </div>
+  </div>
+
+</section>
+
+<script>
+  document.querySelectorAll('.post-title').forEach(title => {
+    title.addEventListener('click', () => {
+      const content = title.nextElementSibling;
+      if (content.style.display === 'none' || !content.style.display) {
+        content.style.display = 'block';
+        title.querySelector('.toggle-btn').textContent = '[-]';
+      } else {
+        content.style.display = 'none';
+        title.querySelector('.toggle-btn').textContent = '[+]';
+      }
+    });
+  });
+</script>
+
 
   <section id="faq">
     <h2>FAQ</h2>
