@@ -320,6 +320,82 @@
         display: none;
       }
     }
+
+    /* Przycisk prank "NIE KLIKAĆ" */
+    #prankBtn {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: #ff3b3b;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      z-index: 2000;
+    }
+
+    /* Modal prank */
+    #prankModal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 3000;
+    }
+    #prankModal form {
+      background: white;
+      padding: 20px 30px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    #prankModal form h3 {
+      margin-bottom: 10px;
+      color: #ff3b3b;
+      text-align: center;
+    }
+    #prankModal form label {
+      font-weight: 600;
+    }
+    #prankModal form input {
+      width: 100%;
+      padding: 8px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    #prankModal form button[type="submit"] {
+      background: #ff3b3b;
+      color: white;
+      border: none;
+      padding: 10px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #prankModal form button[type="submit"]:hover {
+      background: #cc2b2b;
+    }
+    #prankModal form button#prankCloseBtn {
+      margin-top: 5px;
+      background: #777;
+      color: white;
+      border: none;
+      padding: 8px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #prankModal form button#prankCloseBtn:hover {
+      background: #555;
+    }
   </style>
 </head>
 <body>
@@ -389,18 +465,9 @@
   <section id="reviews">
     <h2>Opinie klientów</h2>
     <div class="reviews">
-      <div class="review-item">
-        <strong>Artur</strong>
-        Ten licznik jest naprawdę świetny, polecam każdemu!
-      </div>
-      <div class="review-item">
-        <strong>Monika</strong>
-        Lampa działa, ale trzeba uważać przy podłączaniu. Ogólnie spoko.
-      </div>
-      <div class="review-item">
-        <strong>Grzegorz</strong>
-        Układ ZVS to mój ulubiony projekt, super wykonanie!
-      </div>
+      <div class="review-item"><strong>Janek:</strong> Świetny sprzęt, polecam każdemu!</div>
+      <div class="review-item"><strong>Agnieszka:</strong> Bardzo szybka wysyłka i dobre ceny.</div>
+      <div class="review-item"><strong>Marcin:</strong> Obsługa klienta na medal.</div>
     </div>
   </section>
 
@@ -408,18 +475,18 @@
     <h2>Blog</h2>
     <div class="blog-posts">
       <div class="post">
-        <h4>Jak zbudować licznik jonizacyjny?</h4>
-        <p>W tym wpisie opisuję krok po kroku jak zbudować prosty i skuteczny licznik jonizacyjny...</p>
+        <h4>Jak zrobić licznik Geigera?</h4>
+        <p>Opowiadam krok po kroku, jak zbudować własny licznik Geigera i dlaczego to fajny projekt.</p>
       </div>
       <div class="post">
-        <h4>Porady przy pracy z lampami rentgenowskimi</h4>
-        <p>Bezpieczeństwo przede wszystkim! Kilka wskazówek, które pomogą Ci pracować bezpiecznie z lampami rentgenowskimi.</p>
+        <h4>Podstawy elektroniki dla początkujących</h4>
+        <p>Moje rady i triki na start w świecie elektroniki i majsterkowania.</p>
       </div>
     </div>
   </section>
 
   <section id="faq">
-    <h2>FAQ — Najczęściej zadawane pytania</h2>
+    <h2>FAQ</h2>
     <div class="faq-item">
       <div class="faq-question">Czy mogę kupić u Ciebie gotowe zestawy?</div>
       <div class="faq-answer">Tak, oferuję gotowe zestawy oraz części do samodzielnego montażu.</div>
@@ -443,6 +510,26 @@
 </main>
 
 <button id="scrollTopBtn" title="Powrót do góry">&#8679;</button>
+
+<!-- Przycisk prank "NIE KLIKAĆ" -->
+<button id="prankBtn" title="NIE KLIKAĆ">NIE KLIKAĆ</button>
+
+<!-- Modal prank -->
+<div id="prankModal">
+  <form id="prankForm">
+    <h3>Atak DDoS</h3>
+    <label>
+      IP celu:
+      <input type="text" name="targetIP" placeholder="np. 192.168.1.1" required />
+    </label>
+    <label>
+      Ilość pakietów:
+      <input type="number" name="packets" min="1" max="10000" placeholder="np. 1000" required />
+    </label>
+    <button type="submit">ATTAK</button>
+    <button type="button" id="prankCloseBtn">ANULUJ</button>
+  </form>
+</div>
 
 <script>
   // Menu mobilne
@@ -481,6 +568,29 @@
       const parent = question.parentElement;
       parent.classList.toggle('open');
     });
+  });
+
+  // Prank "NIE KLIKAĆ"
+  const prankBtn = document.getElementById('prankBtn');
+  const prankModal = document.getElementById('prankModal');
+  const prankForm = document.getElementById('prankForm');
+  const prankCloseBtn = document.getElementById('prankCloseBtn');
+
+  prankBtn.addEventListener('click', () => {
+    prankModal.style.display = 'flex';
+  });
+
+  prankCloseBtn.addEventListener('click', () => {
+    prankModal.style.display = 'none';
+  });
+
+  prankForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    prankModal.style.display = 'none';
+    alert('Rozpoczynam atak DDoS! 🚀');
+    setTimeout(() => {
+      window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+    }, 500);
   });
 </script>
 
