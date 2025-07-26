@@ -458,25 +458,48 @@
       });
     });
 
-    // Formularz kontaktowy - tylko lokalna symulacja
-    const form = document.getElementById('contact-form');
-    const response = document.getElementById('form-response');
+   <div class="socials" style="text-align:center; margin-top:30px;">
+  <p>Skontaktuj się mailowo lub przez social media:</p>
+  <a href="mailto:grzegorz.rozwadowski.10@gmail.com">📧 E-mail</a><br/>
+  <a href="https://instagram.com/grzehula1234" target="_blank">📷 Instagram</a><br/>
+  <a href="https://github.com/grzehula12" target="_blank">💻 GitHub</a>
+</div>
 
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      response.style.color = '#1db954';
-      response.textContent = 'Dziękujemy za wiadomość! Odezwiemy się najszybciej jak to możliwe.';
-      form.reset();
+</section>
+
+</div>
+
+<footer>...</footer>
+
+<script>
+  // FAQ toggle accessibility & animations
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const answer = item.querySelector('.faq-answer');
+      const isOpen = item.classList.toggle('open');
+
+      answer.hidden = !isOpen;
+      q.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
-    
-  <h2>Kontakt</h2>
-    <p>Skontaktuj się mailowo lub przez social media:</p>
-    <div class="socials">
-      <a href="mailto:grzegorz.rozwadowski.10@gmail.com">📧 E-mail</a>
-      <a href="https://instagram.com/grzehula1234" target="_blank">📷 Instagram</a>
-      <a href="https://github.com/grzehula12" target="_blank">💻 GitHub</a>
-    </div>
+    q.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        q.click();
+      }
+    });
+  });
 
+  // Formularz kontaktowy - tylko lokalna symulacja
+  const form = document.getElementById('contact-form');
+  const response = document.getElementById('form-response');
 
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    response.style.color = '#1db954';
+    response.textContent = 'Dziękujemy za wiadomość! Odezwiemy się najszybciej jak to możliwe.';
+    form.reset();
+  });
+</script>
 </body>
 </html>
