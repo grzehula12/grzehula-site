@@ -296,6 +296,28 @@
     <section id="countdown-section">
       <div id="countdown">00:00:00:00</div>
     </section>
+    <div id="player" style="text-align:center; margin-top:40px;">
+  <h2 style="color:white;">🎵 Muzyka z duszą:</h2>
+  <audio id="audio" controls style="width:90%; max-width:400px;">
+    <source src="music/1.mp3" type="audio/mpeg">
+    Twoja przeglądarka nie wspiera audio.
+  </audio><br><br>
+
+  <button onclick="changeSong('1.mp3')">1</button>
+  <button onclick="changeSong('2.mp3')">2</button>
+  <button onclick="changeSong('3.mp3')">3</button>
+  <button onclick="changeSong('4.mp3')">4</button>
+  <button onclick="changeSong('5.mp3')">5</button>
+</div>
+
+<script>
+  function changeSong(filename) {
+    const audio = document.getElementById("audio");
+    audio.src = "music/" + filename;
+    audio.play();
+  }
+</script>
+
 
     <section id="mapa">
       <h2>Gdzie nas znajdziesz?</h2>
