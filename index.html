@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Grzehula Store</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/1/1d/Favicon_Logo.png">
   <style>
     body {
       margin: 0;
@@ -32,7 +31,7 @@
       background-color: #001a26;
       display: flex;
       justify-content: center;
-      flex-wrap: nowrap; /* WAŻNE: nie łamiemy na kolejną linię */
+      flex-wrap: wrap;
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -40,13 +39,10 @@
     }
 
     nav a {
-      flex: 1;             /* Każda zakładka ma równą szerokość */
-      padding: 15px 0;
+      padding: 15px 20px;
       color: #00eaff;
-      text-align: center;
       text-decoration: none;
       transition: background 0.3s;
-      user-select: none;
     }
 
     nav a:hover {
@@ -94,37 +90,11 @@
       cursor: pointer;
       font-weight: bold;
       color: #0ff;
-      user-select: none;
     }
 
     .faq-answer {
       margin-top: 8px;
       color: #b2ffff;
-    }
-
-    .madrosci {
-      background: #001b2e;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px #00f2ff;
-      user-select: none;
-      text-align: center;
-    }
-
-    .madrosci button {
-      background: #004d66;
-      color: #0ff;
-      border: none;
-      padding: 12px 25px;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
-      margin-top: 15px;
-    }
-
-    .madrosci button:hover {
-      background: #0077aa;
     }
 
     .socials a {
@@ -136,7 +106,6 @@
       text-decoration: none;
       border-radius: 5px;
       transition: background 0.3s;
-      user-select: none;
     }
 
     .socials a:hover {
@@ -166,7 +135,6 @@
       cursor: pointer;
       font-weight: bold;
       transition: background 0.3s;
-      user-select: none;
     }
 
     button:hover {
@@ -180,13 +148,61 @@
       padding: 20px;
       color: #00eaff;
       margin-top: 40px;
+    }
+
+    /* Mądrości */
+    #madrosci-container {
+      background: #001a26;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #00f2ff;
+      color: #0ff;
+      text-align: center;
       user-select: none;
+    }
+
+    #madrosci-text {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      min-height: 60px;
+      font-style: italic;
+    }
+
+    #madrosci-button {
+      cursor: pointer;
+      padding: 10px 20px;
+      background: #004d66;
+      color: #00eaff;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      box-shadow: 0 0 8px #00f2ff;
+      transition: background 0.3s;
+      user-select: none;
+    }
+    #madrosci-button:hover {
+      background: #007799;
+    }
+
+    /* Odliczanie czerwone */
+    #countdown {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 3rem;
+      font-weight: bold;
+      color: #ff0000;
+      text-align: center;
+      margin-top: 30px;
+      user-select: none;
+      text-shadow: 0 0 10px #ff0000;
+      letter-spacing: 2px;
     }
 
     @media (max-width: 600px) {
       nav a {
         padding: 10px;
-        font-size: 0.9rem;
+      }
+      #countdown {
+        font-size: 2rem;
       }
     }
   </style>
@@ -233,20 +249,20 @@
     </section>
 
     <section id="madrosci">
-      <h2>Mądrości na dziś</h2>
-      <div class="madrosci">
-        <div id="madroscTekst">Kliknij przycisk, aby poznać mądrość!</div>
-        <button id="madroscBtn" aria-label="Pokaż mądrość">Kliknij mnie</button>
+      <h2>Mądrości losowe</h2>
+      <div id="madrosci-container">
+        <div id="madrosci-text">Kliknij przycisk, aby zobaczyć mądrość!</div>
+        <button id="madrosci-button" aria-label="Pokaż mądrość">Klik!</button>
       </div>
+    </section>
+
+    <section id="countdown-section">
+      <div id="countdown">00:00:00:00</div>
     </section>
 
     <section id="mapa">
       <h2>Gdzie nas znajdziesz?</h2>
-      <iframe
-        src="https://www.google.com/maps?q=Pałac+Kultury+i+Nauki,+Warszawa&output=embed"
-        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-        title="Mapa lokalizacji">
-      </iframe>
+      <iframe src="https://www.google.com/maps?q=Pałac+Kultury+i+Nauki,+Warszawa&output=embed" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>
 
     <section id="kontakt" tabindex="0" aria-labelledby="kontakt-title" role="region">
@@ -263,12 +279,13 @@
 
         <button type="submit">Wyślij wiadomość</button>
       </form>
-      <div class="socials" style="margin-top: 20px; text-align: center;">
+      <div class="socials">
         <a href="mailto:grzegorz.rozwadowski.10@gmail.com">📧 E-mail</a>
-        <a href="https://instagram.com/grzehula1234" target="_blank" rel="noopener noreferrer">📷 Instagram</a>
-        <a href="https://github.com/grzehula12" target="_blank" rel="noopener noreferrer">💻 GitHub</a>
+        <a href="https://instagram.com/grzehula1234" target="_blank">📷 Instagram</a>
+        <a href="https://github.com/grzehula12" target="_blank">💻 GitHub</a>
       </div>
     </section>
+
   </div>
 
   <footer>
@@ -286,37 +303,63 @@
       });
     });
 
-    // Mądrości
+    // Mądrości losowe
     const madrosci = [
-      "Nie odkładaj na jutro tego, co możesz zrobić pojutrze.",
-      "Kto rano wstaje, ten... jest niewyspany.",
+      "Nie bój się iść powoli, bój się tylko stać w miejscu.",
       "Lepszy wróbel w garści niż gołąb na dachu.",
+      "Kto rano wstaje, temu Pan Bóg daje.",
       "Nie ma tego złego, co by na dobre nie wyszło.",
-      "Gdzie kucharek sześć, tam nie ma co jeść.",
-      "Lepszy polak po szkodzie, niż Niemiec w Skodzie.",
       "Cierpliwość jest gorzka, ale jej owoce są słodkie.",
-      "Każdy kij ma dwa końce.",
+      "Gdzie kucharek sześć, tam nie ma co jeść.",
       "Co nagle, to po diable.",
-      "Darowanemu koniowi nie zagląda się w zęby.",
-      "Fortuna kołem się toczy.",
-      "Z pustego i Salomon nie naleje.",
-      "Lepszy wróbel w garści niż gołąb na dachu.",
-      "Jak cię widzą, tak cię piszą.",
+      "Mowa jest srebrem, a milczenie złotem.",
       "Nie chwal dnia przed zachodem słońca.",
-      "Nie taki diabeł straszny, jak go malują.",
-      "Kto pod kim dołki kopie, sam w nie wpada.",
-      "Mówił dziad do obrazu, a obraz do niego nie mówił.",
-      "Lepiej dmuchać na zimne.",
-      "Co się odwlecze, to nie uciecze."
+      "Zgoda buduje, niezgoda rujnuje.",
+      "Co dwie głowy, to nie jedna.",
+      "Nie odkładaj na jutro, co możesz zrobić dziś.",
+      "Lepsza późno niż wcale.",
+      "Bez pracy nie ma kołaczy.",
+      "Czas to pieniądz.",
+      "Mądry Polak po szkodzie.",
+      "Jaka praca, taka płaca.",
+      "Nie wszystko złoto, co się świeci.",
+      "Każdy jest kowalem swojego losu.",
+      "Kto pyta, nie błądzi."
     ];
 
-    const madroscTekst = document.getElementById('madroscTekst');
-    const madroscBtn = document.getElementById('madroscBtn');
+    const madrosciText = document.getElementById('madrosci-text');
+    const madrosciButton = document.getElementById('madrosci-button');
 
-    madroscBtn.addEventListener('click', () => {
-      const losowa = madrosci[Math.floor(Math.random() * madrosci.length)];
-      madroscTekst.textContent = losowa;
+    madrosciButton.addEventListener('click', () => {
+      const randomIndex = Math.floor(Math.random() * madrosci.length);
+      madrosciText.textContent = madrosci[randomIndex];
     });
+
+    // Odliczanie do 12 sierpnia 2025 12:00
+    function updateCountdown() {
+      const now = new Date();
+      const target = new Date('2025-08-12T12:00:00');
+      const diff = target - now;
+
+      if (diff <= 0) {
+        document.getElementById('countdown').textContent = '00:00:00:00';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      // Formatowanie na 2 cyfry
+      const format = num => num.toString().padStart(2, '0');
+
+      document.getElementById('countdown').textContent =
+        `${format(days)}:${format(hours)}:${format(minutes)}:${format(seconds)}`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
   </script>
 </body>
 </html>
