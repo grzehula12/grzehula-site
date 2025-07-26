@@ -468,6 +468,32 @@
       response.textContent = 'Dziękujemy za wiadomość! Odezwiemy się najszybciej jak to możliwe.';
       form.reset();
     });
+    
+    <script>
+  document.querySelectorAll('.faq-question').forEach((question) => {
+    function toggleAnswer() {
+      const answerId = question.getAttribute('aria-controls');
+      const answer = document.getElementById(answerId);
+      const expanded = question.getAttribute('aria-expanded') === 'true';
+
+      question.setAttribute('aria-expanded', (!expanded).toString());
+      if (expanded) {
+        answer.setAttribute('hidden', '');
+      } else {
+        answer.removeAttribute('hidden');
+      }
+    }
+
+    question.addEventListener('click', toggleAnswer);
+    question.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleAnswer();
+      }
+    });
+  });
+</script>
+
 
 </body>
 </html>
