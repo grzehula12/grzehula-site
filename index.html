@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Grzehula Hub - Nowoczesna Strona</title>
+  <title>Grzehula Hub - Mega Nowoczesna Strona 2025</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
   <style>
@@ -14,240 +14,608 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     body {
-      background: #f0f4f8;
-      color: #222;
+      background: #121212;
+      color: #eee;
       line-height: 1.6;
       scroll-behavior: smooth;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+    a {
+      color: #1db954;
+      text-decoration: none;
+    }
+    a:hover, a:focus {
+      text-decoration: underline;
     }
 
-    /* Nagłówek powitalny */
+    /* GŁÓWNY KONTENER */
+    #container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 20px 100px;
+    }
+
+    /* NAGŁÓWEK */
     header {
-      background: linear-gradient(135deg, #007bff, #00d4ff);
-      color: white;
-      padding: 80px 20px;
-      text-align: center;
-      font-size: 3.2rem;
+      background: linear-gradient(90deg, #1db954, #1ed760);
+      color: #121212;
+      padding: 100px 20px;
+      font-size: 4rem;
       font-weight: 900;
+      text-align: center;
+      letter-spacing: 2px;
       user-select: none;
-      box-shadow: 0 4px 15px rgba(0,123,255,0.5);
+      text-shadow: 0 0 20px rgba(29,185,84,0.6);
+      border-radius: 0 0 50% 50% / 20% 20% 80% 80%;
+      margin-bottom: 60px;
     }
 
-    /* Pasek nawigacji */
+    /* PASEK NAWIGACYJNY */
     nav {
       background: #222;
-      display: flex;
-      justify-content: center;
-      padding: 15px 0;
       position: sticky;
       top: 0;
       z-index: 9999;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+      box-shadow: 0 3px 15px rgba(0,0,0,0.7);
     }
     nav ul {
-      list-style: none;
       display: flex;
-      gap: 2rem;
+      justify-content: center;
+      list-style: none;
+      padding: 15px 0;
+      gap: 3rem;
+      user-select: none;
     }
     nav ul li a {
-      color: #ddd;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-      padding: 8px 12px;
-      border-radius: 5px;
-      transition: background-color 0.3s, color 0.3s;
-      user-select: none;
-    }
-    nav ul li a:hover,
-    nav ul li a:focus {
-      background-color: #007bff;
-      color: white;
-      outline: none;
-    }
-
-    main {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
-    /* Sekcje */
-    section {
-      background: white;
-      padding: 25px 30px;
-      margin-bottom: 40px;
-      border-radius: 10px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
-    }
-    h2 {
-      color: #007bff;
-      margin-bottom: 20px;
-      user-select: none;
-      border-bottom: 3px solid #007bff;
-      padding-bottom: 8px;
-      font-size: 2rem;
-    }
-
-    /* Opinie */
-    .review {
-      border-left: 5px solid #007bff;
-      background: #e8f0fe;
-      padding: 15px 20px;
-      margin-bottom: 15px;
-      font-style: italic;
-      color: #222;
-      border-radius: 5px;
-      user-select: none;
-    }
-    .review strong {
       font-weight: 700;
-      color: #0056b3;
-      display: block;
-      margin-bottom: 5px;
+      font-size: 1.25rem;
+      color: #eee;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: background-color 0.4s, color 0.4s;
+      display: inline-block;
+    }
+    nav ul li a:hover, nav ul li a:focus {
+      background-color: #1db954;
+      color: #121212;
+      outline: none;
+      box-shadow: 0 0 10px #1db954;
+    }
+
+    /* SEKCJE */
+    section {
+      background: #1e1e1e;
+      margin-bottom: 60px;
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 6px 18px rgba(29,185,84,0.3);
+      scroll-margin-top: 80px;
+    }
+    section h2 {
+      font-size: 2.8rem;
+      margin-bottom: 30px;
+      color: #1db954;
+      border-bottom: 3px solid #1db954;
+      padding-bottom: 8px;
+      user-select: none;
+    }
+
+    /* OPINIE */
+    .reviews {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      justify-content: space-between;
+    }
+    .review-card {
+      background: #292929;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 8px 20px rgba(29,185,84,0.2);
+      flex: 1 1 calc(33% - 20px);
+      min-width: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease;
+      cursor: default;
+      user-select: none;
+    }
+    .review-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 25px rgba(29,185,84,0.5);
+    }
+    .review-text {
+      font-style: italic;
+      font-size: 1.15rem;
+      color: #ccc;
+      margin-bottom: 15px;
+      flex-grow: 1;
+    }
+    .review-author {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #1db954;
+      text-align: right;
     }
 
     /* FAQ */
+    .faq-list {
+      max-width: 900px;
+      margin: 0 auto;
+    }
     .faq-item {
-      margin-bottom: 20px;
+      margin-bottom: 25px;
+      border-radius: 12px;
+      background: #222;
+      box-shadow: 0 5px 15px rgba(29,185,84,0.15);
+      overflow: hidden;
     }
     .faq-question {
-      font-weight: 700;
+      padding: 18px 25px;
       cursor: pointer;
-      padding: 12px 20px;
-      background: #f5faff;
-      border-radius: 8px;
-      user-select: none;
-      transition: background-color 0.3s;
+      font-weight: 700;
+      font-size: 1.3rem;
       position: relative;
+      color: #1db954;
+      user-select: none;
+      transition: background-color 0.4s;
+    }
+    .faq-question:hover {
+      background: #1db954;
+      color: #121212;
     }
     .faq-question::after {
       content: '+';
+      font-weight: 900;
+      font-size: 2rem;
       position: absolute;
-      right: 20px;
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: #007bff;
+      right: 25px;
+      top: 50%;
+      transform: translateY(-50%);
       transition: transform 0.3s;
     }
     .faq-item.open .faq-question::after {
       content: '−';
-      transform: rotate(180deg);
+      transform: translateY(-50%) rotate(180deg);
     }
     .faq-answer {
       max-height: 0;
+      padding: 0 25px;
+      color: #ccc;
+      font-size: 1.15rem;
+      line-height: 1.5;
       overflow: hidden;
-      padding: 0 20px;
-      color: #333;
-      transition: max-height 0.4s ease, padding 0.4s ease;
+      transition: max-height 0.5s ease, padding 0.5s ease;
     }
     .faq-item.open .faq-answer {
-      max-height: 500px;
-      padding: 15px 20px;
+      padding: 18px 25px;
+      max-height: 1000px;
     }
 
-    /* Mapka */
+    /* MAPKA */
     #map {
       width: 100%;
-      height: 300px;
-      border-radius: 10px;
+      height: 400px;
+      border-radius: 15px;
       border: none;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 20px rgba(29,185,84,0.5);
     }
 
-    /* Stopka */
-    footer {
-      text-align: center;
-      color: #666;
-      padding: 15px 10px;
-      font-size: 0.9rem;
+    /* FORMULARZ KONTAKTOWY */
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #222;
+      padding: 35px 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(29,185,84,0.25);
+    }
+    form h3 {
+      color: #1db954;
+      font-size: 2rem;
+      margin-bottom: 25px;
       user-select: none;
     }
+    form label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 700;
+      color: #ccc;
+      user-select: none;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+      background: #121212;
+      color: #eee;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      resize: vertical;
+    }
+    form input:focus, form textarea:focus {
+      background-color: #1db954;
+      color: #121212;
+      outline: none;
+      box-shadow: 0 0 10px #1db954;
+    }
+    form button {
+      background: #1db954;
+      color: #121212;
+      font-weight: 700;
+      font-size: 1.2rem;
+      padding: 14px 30px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 6px 15px rgba(29,185,84,0.7);
+      transition: background-color 0.3s, box-shadow 0.3s;
+      user-select: none;
+    }
+    form button:hover, form button:focus {
+      background-color: #17a746;
+      box-shadow: 0 8px 20px rgba(23,167,70,0.9);
+      outline: none;
+    }
 
-    /* Responsywność */
-    @media(max-width: 600px) {
-      header {
-        font-size: 2rem;
-        padding: 60px 10px;
+    /* STOPKA */
+    footer {
+      text-align: center;
+      padding: 20px 10px;
+      color: #555;
+      font-size: 0.9rem;
+      user-select: none;
+      border-top: 1px solid #333;
+      margin-top: 80px;
+    }
+
+    /* RESPONSYWNOŚĆ */
+    @media (max-width: 1000px) {
+      .reviews {
+        flex-direction: column;
+        gap: 30px;
+      }
+      .review-card {
+        flex: none;
+        width: 100%;
       }
       nav ul {
-        gap: 1rem;
+        gap: 1.8rem;
+      }
+      section {
+        padding: 30px 20px;
+        margin-bottom: 50px;
+      }
+    }
+    @media (max-width: 600px) {
+      header {
+        font-size: 2.8rem;
+        padding: 80px 10px;
+        border-radius: 0 0 60% 60% / 30% 30% 70% 70%;
+      }
+      nav ul {
+        flex-wrap: wrap;
+        gap: 1.2rem;
       }
       nav ul li a {
         font-size: 1rem;
-        padding: 6px 8px;
+        padding: 6px 12px;
+      }
+      form {
+        padding: 25px 20px;
       }
     }
+
+    /* Animacja ładowania przycisku (dla zabawy) */
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 10px #1db954;
+      }
+      50% {
+        box-shadow: 0 0 30px #1ed760;
+      }
+    }
+    .pulse-button {
+      animation: pulse 2.5s infinite;
+    }
+
   </style>
 </head>
-
 <body>
 
   <header>
-    Witaj na Grzehula Hub!
+    Witaj na Grzehula Hub - Twoim nowoczesnym centrum technologii!
   </header>
 
-  <nav>
-    <ul>
-      <li><a href="#opinie">Opinie</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#map">Nasza lokalizacja</a></li>
+  <nav aria-label="Główne menu nawigacyjne">
+    <ul role="menubar">
+      <li role="none"><a role="menuitem" href="#opinie" tabindex="0">Opinie</a></li>
+      <li role="none"><a role="menuitem" href="#faq" tabindex="0">FAQ</a></li>
+      <li role="none"><a role="menuitem" href="#map" tabindex="0">Nasza lokalizacja</a></li>
+      <li role="none"><a role="menuitem" href="#kontakt" tabindex="0">Kontakt</a></li>
+      <li role="none"><a role="menuitem" href="#gierka" tabindex="0">Gierka</a></li>
     </ul>
   </nav>
 
-  <main>
-    <section id="opinie">
-      <h2>Opinie naszych klientów</h2>
-      <div class="review"><strong>Janek:</strong> Super strona, polecam każdemu pasjonatowi!</div>
-      <div class="review"><strong>Agnieszka:</strong> Profesjonalna i szybka obsługa.</div>
-      <div class="review"><strong>Marcin:</strong> Bardzo przyjazna i przejrzysta witryna.</div>
+  <div id="container">
+
+    <!-- Opinie -->
+    <section id="opinie" tabindex="0" aria-labelledby="opinie-title" role="region">
+      <h2 id="opinie-title">Opinie naszych klientów</h2>
+      <div class="reviews">
+        <article class="review-card" tabindex="0" aria-label="Opinia Jana">
+          <p class="review-text">"Niesamowite miejsce! Strona działa szybko i wygląda świetnie. Polecam każdemu, kto kocha nowoczesność."</p>
+          <p class="review-author">– Jan Kowalski</p>
+        </article>
+        <article class="review-card" tabindex="0" aria-label="Opinia Agnieszki">
+          <p class="review-text">"Profesjonalna obsługa i błyskawiczna pomoc. Wspaniała ekipa!"</p>
+          <p class="review-author">– Agnieszka Nowak</p>
+        </article>
+        <article class="review-card" tabindex="0" aria-label="Opinia Marcina">
+          <p class="review-text">"Dzięki nim mój projekt wypalił. Mega polecam!"</p>
+          <p class="review-author">– Marcin Wróbel</p>
+        </article>
+        <article class="review-card" tabindex="0" aria-label="Opinia Zosi">
+          <p class="review-text">"Estetyka i funkcjonalność na najwyższym poziomie."</p>
+          <p class="review-author">– Zofia Malinowska</p>
+        </article>
+        <article class="review-card" tabindex="0" aria-label="Opinia Piotra">
+          <p class="review-text">"Szybko, sprawnie i nowocześnie. Polecam każdemu tech-geekowi."</p>
+          <p class="review-author">– Piotr Zieliński</p>
+        </article>
+      </div>
     </section>
 
-    <section id="faq">
-      <h2>Najczęściej zadawane pytania (FAQ)</h2>
+    <!-- FAQ -->
+    <section id="faq" tabindex="0" aria-labelledby="faq-title" role="region">
+      <h2 id="faq-title">Najczęściej zadawane pytania (FAQ)</h2>
+      <div class="faq-list">
 
-      <div class="faq-item">
-        <div class="faq-question">Czy mogę się z Wami skontaktować? </div>
-        <div class="faq-answer">Tak, zawsze możesz wysłać wiadomość przez formularz kontaktowy lub e-mail.</div>
-      </div>
+        <div class="faq-item" role="listitem">
+          <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq1" id="q1">Czy mogę się z Wami skontaktować?</div>
+          <div class="faq-answer" id="faq1" role="region" aria-labelledby="q1" hidden>Tak, zawsze możesz wysłać wiadomość przez formularz kontaktowy lub e-mail.</div>
+        </div>
 
-      <div class="faq-item">
-        <div class="faq-question">Czy oferujecie wsparcie techniczne?</div>
-        <div class="faq-answer">Oczywiście, pomagamy z każdym projektem lub pytaniem.</div>
-      </div>
+        <div class="faq-item" role="listitem">
+          <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq2" id="q2">Czy oferujecie wsparcie techniczne?</div>
+          <div class="faq-answer" id="faq2" role="region" aria-labelledby="q2" hidden>Oczywiście, pomagamy z każdym projektem lub pytaniem.</div>
+        </div>
 
-      <div class="faq-item">
-        <div class="faq-question">Czy strona jest responsywna?</div>
-        <div class="faq-answer">Tak, działa świetnie na wszystkich urządzeniach — telefonach, tabletach i komputerach.</div>
+        <div class="faq-item" role="listitem">
+          <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq3" id="q3">Czy strona jest responsywna?</div>
+          <div class="faq-answer" id="faq3" role="region" aria-labelledby="q3" hidden>Tak, działa świetnie na wszystkich urządzeniach — telefonach, tabletach i komputerach.</div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq4" id="q4">Czy dodajecie nowe funkcje często?</div>
+          <div class="faq-answer" id="faq4" role="region" aria-labelledby="q4" hidden>Tak, stale rozwijamy stronę i dodajemy nowe opcje.</div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq5" id="q5">Jak mogę zgłosić sugestię?</div>
+          <div class="faq-answer" id="faq5" role="region" aria-labelledby="q5" hidden>Najprościej przez formularz kontaktowy lub bezpośrednio mailowo.</div>
+        </div>
+
       </div>
     </section>
 
-    <section id="map">
+    <!-- Mapa -->
+    <section id="map" tabindex="0" aria-label="Mapa z lokalizacją firmy" role="region">
       <h2>Nasza lokalizacja</h2>
       <iframe 
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2448.338154708785!2d21.012228415877217!3d52.22967597978814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471eccf557a9eb55%3A0xa5e66b11ef1eb223!2sWarsaw%2C%20Poland!5e0!3m2!1spl!2spl!4v1680000000000!5m2!1spl!2spl" 
-        width="100%" 
-        height="300" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade">
+        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="Mapa Warszawy">
       </iframe>
     </section>
-  </main>
+
+    <!-- Kontakt -->
+    <section id="kontakt" tabindex="0" aria-labelledby="kontakt-title" role="region">
+      <h2 id="kontakt-title">Kontakt</h2>
+      <form id="contact-form" aria-label="Formularz kontaktowy">
+        <h3>Napisz do nas</h3>
+        <label for="name">Imię i nazwisko</label>
+        <input type="text" id="name" name="name" placeholder="Jan Kowalski" required aria-required="true" />
+
+        <label for="email">Adres e-mail</label>
+        <input type="email" id="email" name="email" placeholder="jan@example.com" required aria-required="true" />
+
+        <label for="message">Wiadomość</label>
+        <textarea id="message" name="message" rows="5" placeholder="Twoja wiadomość..." required aria-required="true"></textarea>
+
+        <button type="submit" class="pulse-button" aria-label="Wyślij wiadomość">Wyślij</button>
+      </form>
+      <p id="form-response" role="alert" aria-live="polite" style="margin-top:15px; text-align:center;"></p>
+    </section>
+
+    <!-- Gierka - Chrome Dino easter egg -->
+    <section id="gierka" tabindex="0" aria-labelledby="gierka-title" role="region">
+      <h2 id="gierka-title">Gierka: Chrome Dino</h2>
+      <p>Zagraj w kultową grę dinozaura z Chrome!</p>
+      <canvas id="dino-game" width="600" height="150" style="background:#fff; border-radius:10px; box-shadow:0 5px 15px rgba(29,185,84,0.4); display: block; margin: 0 auto;"></canvas>
+      <p style="text-align:center; margin-top:10px; font-size: 1rem; color: #bbb;">Sterowanie: spacja lub strzałka w górę — skacz. Powodzenia!</p>
+    </section>
+
+  </div>
 
   <footer>
-    &copy; 2025 Grzehula Hub. Wszystkie prawa zastrzeżone.
+    &copy; 2025 Grzehula Hub. Wszystkie prawa zastrzeżone. Made with 💚 by ChatGPT.
   </footer>
 
   <script>
-    // FAQ toggle
-    document.querySelectorAll('.faq-question').forEach(question => {
-      question.addEventListener('click', () => {
-        const parent = question.parentElement;
-        parent.classList.toggle('open');
+    // FAQ toggle accessibility & animations
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.parentElement;
+        const answer = item.querySelector('.faq-answer');
+        const isOpen = item.classList.toggle('open');
+
+        answer.hidden = !isOpen;
+        q.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+      q.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          q.click();
+        }
       });
     });
+
+    // Formularz kontaktowy - tylko lokalna symulacja
+    const form = document.getElementById('contact-form');
+    const response = document.getElementById('form-response');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      response.style.color = '#1db954';
+      response.textContent = 'Dziękujemy za wiadomość! Odezwiemy się najszybciej jak to możliwe.';
+      form.reset();
+    });
+
+    // Prosta gra Chrome Dino (bardzo uproszczona wersja)
+
+    (function() {
+      const canvas = document.getElementById('dino-game');
+      if (!canvas.getContext) return;
+      const ctx = canvas.getContext('2d');
+      const width = canvas.width;
+      const height = canvas.height;
+
+      // Dino
+      let dino = {
+        x: 50,
+        y: height - 45,
+        width: 40,
+        height: 40,
+        dy: 0,
+        gravity: 1,
+        jumpPower: 15,
+        isJumping: false,
+      };
+
+      // Przeszkody
+      let obstacles = [];
+      let obstacleSpeed = 6;
+      let spawnTimer = 0;
+
+      // Wynik
+      let score = 0;
+
+      // Sterowanie
+      function jump() {
+        if (!dino.isJumping) {
+          dino.dy = -dino.jumpPower;
+          dino.isJumping = true;
+        }
+      }
+      window.addEventListener('keydown', e => {
+        if (e.code === 'Space' || e.code === 'ArrowUp') {
+          e.preventDefault();
+          jump();
+        }
+      });
+
+      // Rysowanie dino
+      function drawDino() {
+        ctx.fillStyle = '#1db954';
+        ctx.fillRect(dino.x, dino.y, dino.width, dino.height);
+        // Oczy
+        ctx.fillStyle = '#121212';
+        ctx.fillRect(dino.x + 10, dino.y + 10, 8, 8);
+      }
+
+      // Rysowanie przeszkód
+      function drawObstacles() {
+        ctx.fillStyle = '#e02424';
+        obstacles.forEach(obs => {
+          ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
+        });
+      }
+
+      // Aktualizacja przeszkód
+      function updateObstacles() {
+        spawnTimer--;
+        if (spawnTimer <= 0) {
+          const heightObs = 30 + Math.random() * 20;
+          obstacles.push({
+            x: width,
+            y: height - heightObs - 5,
+            width: 15,
+            height: heightObs,
+          });
+          spawnTimer = 60 + Math.floor(Math.random() * 60);
+        }
+        obstacles.forEach((obs, i) => {
+          obs.x -= obstacleSpeed;
+          if (obs.x + obs.width < 0) {
+            obstacles.splice(i, 1);
+            score++;
+          }
+        });
+      }
+
+      // Sprawdzenie kolizji
+      function checkCollision() {
+        for (let obs of obstacles) {
+          if (
+            dino.x < obs.x + obs.width &&
+            dino.x + dino.width > obs.x &&
+            dino.y < obs.y + obs.height &&
+            dino.y + dino.height > obs.y
+          ) {
+            return true;
+          }
+        }
+        return false;
+      }
+
+      // Główna pętla gry
+      function gameLoop() {
+        ctx.clearRect(0, 0, width, height);
+
+        // Tło
+        ctx.fillStyle = '#f0f0f0';
+        ctx.fillRect(0, height - 5, width, 5);
+
+        // Update dino
+        dino.dy += dino.gravity;
+        dino.y += dino.dy;
+        if (dino.y > height - dino.height - 5) {
+          dino.y = height - dino.height - 5;
+          dino.isJumping = false;
+          dino.dy = 0;
+        }
+
+        updateObstacles();
+        drawObstacles();
+        drawDino();
+
+        // Rysowanie wyniku
+        ctx.fillStyle = '#333';
+        ctx.font = '20px monospace';
+        ctx.fillText(`Wynik: ${score}`, width - 130, 30);
+
+        if (checkCollision()) {
+          ctx.fillStyle = 'rgba(255,0,0,0.6)';
+          ctx.fillRect(0, 0, width, height);
+          ctx.fillStyle = '#fff';
+          ctx.font = '40px monospace';
+          ctx.fillText('KONIEC GRY!', width / 2 - 100, height / 2);
+          ctx.font = '20px monospace';
+          ctx.fillText('Odśwież stronę, aby zagrać ponownie', width / 2 - 140, height / 2 + 40);
+          return;
+        }
+
+        requestAnimationFrame(gameLoop);
+      }
+
+      gameLoop();
+    })();
+
   </script>
-  
 </body>
 </html>
