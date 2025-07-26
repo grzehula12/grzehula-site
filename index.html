@@ -298,19 +298,18 @@
       
       <div id="divider"></div>
 
-    <body>
-    </section>
-   <h1>Minimalistyczny Odtwarzacz Muzyki</h1>
+  <section id="player-section">
+  <h1 style="text-align: center;">Minimalistyczny Odtwarzacz Muzyki</h1>
 
-  <div class="player">
-    <ul class="playlist" id="playlist">
-      <li data-src="1.mp3">1. Piosenka 1</li>
-      <li data-src="2.mp3">2. Piosenka 2</li>
-      <li data-src="3.mp3">3. Piosenka 3</li>
-      <li data-src="4.mp3">4. Piosenka 4</li>
-      <li data-src="5.mp3">5. Piosenka 5</li>
+  <div class="player" style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 20px auto; max-width: 400px;">
+    <ul class="playlist" id="playlist" style="list-style: none; padding: 0; width: 100%;">
+      <li data-src="1.mp3" style="padding: 10px; background: #f0f0f0; margin-bottom: 5px; text-align: center; border-radius: 5px; cursor: pointer;">1. Piosenka 1</li>
+      <li data-src="2.mp3" style="padding: 10px; background: #f0f0f0; margin-bottom: 5px; text-align: center; border-radius: 5px; cursor: pointer;">2. Piosenka 2</li>
+      <li data-src="3.mp3" style="padding: 10px; background: #f0f0f0; margin-bottom: 5px; text-align: center; border-radius: 5px; cursor: pointer;">3. Piosenka 3</li>
+      <li data-src="4.mp3" style="padding: 10px; background: #f0f0f0; margin-bottom: 5px; text-align: center; border-radius: 5px; cursor: pointer;">4. Piosenka 4</li>
+      <li data-src="5.mp3" style="padding: 10px; background: #f0f0f0; margin-bottom: 5px; text-align: center; border-radius: 5px; cursor: pointer;">5. Piosenka 5</li>
     </ul>
-    <audio controls id="audioPlayer" preload="metadata">
+    <audio controls id="audioPlayer" preload="metadata" style="width: 100%; margin-top: 10px;">
       Twoja przeglądarka nie wspiera elementu audio.
     </audio>
   </div>
@@ -347,7 +346,8 @@
 
     loadTrack(0);
   </script>
-</body>
+</section>
+
 
     <section id="mapa">
       <h2>Gdzie nas znajdziesz?</h2>
