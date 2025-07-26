@@ -32,7 +32,7 @@
       background-color: #001a26;
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
+      flex-wrap: nowrap; /* WAŻNE: nie łamiemy na kolejną linię */
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -40,10 +40,13 @@
     }
 
     nav a {
-      padding: 15px 20px;
+      flex: 1;             /* Każda zakładka ma równą szerokość */
+      padding: 15px 0;
       color: #00eaff;
+      text-align: center;
       text-decoration: none;
       transition: background 0.3s;
+      user-select: none;
     }
 
     nav a:hover {
@@ -99,9 +102,29 @@
       color: #b2ffff;
     }
 
-    .socials {
+    .madrosci {
+      background: #001b2e;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #00f2ff;
+      user-select: none;
       text-align: center;
-      margin-top: 20px;
+    }
+
+    .madrosci button {
+      background: #004d66;
+      color: #0ff;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 15px;
+    }
+
+    .madrosci button:hover {
+      background: #0077aa;
     }
 
     .socials a {
@@ -113,6 +136,7 @@
       text-decoration: none;
       border-radius: 5px;
       transition: background 0.3s;
+      user-select: none;
     }
 
     .socials a:hover {
@@ -123,12 +147,6 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      max-width: 600px;
-      margin: auto;
-    }
-
-    label {
-      font-weight: bold;
     }
 
     input, textarea {
@@ -137,8 +155,6 @@
       border-radius: 5px;
       background: #001a26;
       color: #00f2ff;
-      font-size: 1rem;
-      font-family: 'Segoe UI', sans-serif;
     }
 
     button {
@@ -150,6 +166,7 @@
       cursor: pointer;
       font-weight: bold;
       transition: background 0.3s;
+      user-select: none;
     }
 
     button:hover {
@@ -166,39 +183,10 @@
       user-select: none;
     }
 
-    /* Mądrości */
-    #madrosci {
-      background: #001a2b;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 12px #00f2ff;
-      text-align: center;
-      max-width: 600px;
-      margin: 40px auto;
-    }
-
-    #madrosci button {
-      margin-top: 15px;
-      background: #008299;
-    }
-
-    #madrosci button:hover {
-      background: #00eaff;
-      color: #000;
-    }
-
-    #madrosci .tekst-madrosci {
-      margin-top: 20px;
-      font-size: 1.25rem;
-      font-style: italic;
-      color: #7fffd4;
-      min-height: 60px;
-      user-select: none;
-    }
-
     @media (max-width: 600px) {
       nav a {
         padding: 10px;
+        font-size: 0.9rem;
       }
     }
   </style>
@@ -231,24 +219,25 @@
     <section id="faq">
       <h2>Najczęściej zadawane pytania</h2>
       <div class="faq-item">
-        <div class="faq-question" tabindex="0">❓ Co to za strona?</div>
+        <div class="faq-question">❓ Co to za strona?</div>
         <div class="faq-answer" hidden>Strona o nas – trochę śmieszna, trochę serio. Po prostu jest.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-question" tabindex="0">❓ Kto ją zrobił?</div>
+        <div class="faq-question">❓ Kto ją zrobił?</div>
         <div class="faq-answer" hidden>Twoja Stara 💪</div>
       </div>
       <div class="faq-item">
-        <div class="faq-question" tabindex="0">❓ Czy mogę się śmiać?</div>
+        <div class="faq-question">❓ Czy mogę się śmiać?</div>
         <div class="faq-answer" hidden>Musisz 😎</div>
       </div>
     </section>
 
-    <section id="madrosci" tabindex="0" aria-label="Losowe mądrości">
+    <section id="madrosci">
       <h2>Mądrości na dziś</h2>
-      <div class="tekst-madrosci">Kliknij przycisk i zobacz mądrość!</div>
-      <button type="button" id="losujMadrosc">Kliknij po mądrość</button>
-      <div style="margin-top: 15px; color: #008080; font-style: italic; user-select:none;">🪨 Ten kamień bez głębszego sensu</div>
+      <div class="madrosci">
+        <div id="madroscTekst">Kliknij przycisk, aby poznać mądrość!</div>
+        <button id="madroscBtn" aria-label="Pokaż mądrość">Kliknij mnie</button>
+      </div>
     </section>
 
     <section id="mapa">
@@ -256,7 +245,7 @@
       <iframe
         src="https://www.google.com/maps?q=Pałac+Kultury+i+Nauki,+Warszawa&output=embed"
         width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-        title="Mapa lokalizacji Grzehula Store">
+        title="Mapa lokalizacji">
       </iframe>
     </section>
 
@@ -274,8 +263,7 @@
 
         <button type="submit">Wyślij wiadomość</button>
       </form>
-
-      <div class="socials">
+      <div class="socials" style="margin-top: 20px; text-align: center;">
         <a href="mailto:grzegorz.rozwadowski.10@gmail.com">📧 E-mail</a>
         <a href="https://instagram.com/grzehula1234" target="_blank" rel="noopener noreferrer">📷 Instagram</a>
         <a href="https://github.com/grzehula12" target="_blank" rel="noopener noreferrer">💻 GitHub</a>
@@ -288,54 +276,47 @@
   </footer>
 
   <script>
-    // FAQ toggle (klik + enter/space obsługa)
+    // FAQ toggle
     document.querySelectorAll('.faq-question').forEach(q => {
       q.addEventListener('click', () => {
         const item = q.closest('.faq-item');
+        item.classList.toggle('open');
         const answer = item.querySelector('.faq-answer');
-        const isOpen = !answer.hidden;
-        answer.hidden = isOpen;
-      });
-      q.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          q.click();
-        }
+        answer.hidden = !item.classList.contains('open');
       });
     });
 
-    // Mądrości - lista 20 losowych mądrości
+    // Mądrości
     const madrosci = [
-      "Nie ma rzeczy niemożliwych, są tylko mniej prawdopodobne.",
-      "Kto rano wstaje, temu Pan Bóg daje... kawę.",
-      "Życie jest jak jazda na rowerze – żeby utrzymać równowagę, musisz się poruszać.",
-      "Śmiech to najtańsza terapia.",
-      "Nie licz kur, zanim nie zniesiesz jajka.",
-      "Cierpliwość jest gorzka, ale jej owoce są słodkie.",
+      "Nie odkładaj na jutro tego, co możesz zrobić pojutrze.",
+      "Kto rano wstaje, ten... jest niewyspany.",
       "Lepszy wróbel w garści niż gołąb na dachu.",
-      "Wszystko, co dobre, kiedyś się kończy – ale zaczyna się coś jeszcze lepszego.",
-      "Kto się śmieje ostatni, ten nie zrozumiał dowcipu.",
-      "Nie ma głupich pytań, są tylko głupie odpowiedzi.",
-      "Szczęście to jedyna rzecz, która się mnoży, jeśli się ją dzieli.",
-      "Nie wszystko złoto, co się świeci, ale u nas świeci wszystko!",
-      "Dzisiaj jest pierwszy dzień reszty twojego życia – więc zacznij od uśmiechu.",
-      "Zawsze bądź sobą – chyba że możesz być jednorożcem. Wtedy bądź jednorożcem.",
-      "Nie odwlekaj na jutro tego, co możesz zrobić pojutrze.",
-      "Najlepsze rzeczy w życiu są za darmo. A reszta? Za dobrą kawę.",
-      "Prawdziwy mistrz nie spada, tylko testuje grawitację.",
-      "Zgubić coś jest łatwo, ale znaleźć siebie – bezcenne.",
-      "Dobry humor jest jak parasol – nie chroni przed deszczem, ale pomaga przetrwać.",
-      "Każdy dzień to nowa szansa na coś nieprzewidywalnego."
+      "Nie ma tego złego, co by na dobre nie wyszło.",
+      "Gdzie kucharek sześć, tam nie ma co jeść.",
+      "Mądry Polak po szkodzie.",
+      "Cierpliwość jest gorzka, ale jej owoce są słodkie.",
+      "Każdy kij ma dwa końce.",
+      "Co nagle, to po diable.",
+      "Darowanemu koniowi nie zagląda się w zęby.",
+      "Fortuna kołem się toczy.",
+      "Z pustego i Salomon nie naleje.",
+      "Lepszy wróbel w garści niż gołąb na dachu.",
+      "Jak cię widzą, tak cię piszą.",
+      "Nie chwal dnia przed zachodem słońca.",
+      "Nie taki diabeł straszny, jak go malują.",
+      "Kto pod kim dołki kopie, sam w nie wpada.",
+      "Mówił dziad do obrazu, a obraz do niego nie mówił.",
+      "Lepiej dmuchać na zimne.",
+      "Co się odwlecze, to nie uciecze."
     ];
 
-    const przycisk = document.getElementById('losujMadrosc');
-    const miejsce = document.querySelector('#madrosci .tekst-madrosci');
+    const madroscTekst = document.getElementById('madroscTekst');
+    const madroscBtn = document.getElementById('madroscBtn');
 
-    przycisk.addEventListener('click', () => {
-      const indeks = Math.floor(Math.random() * madrosci.length);
-      miejsce.textContent = madrosci[indeks];
+    madroscBtn.addEventListener('click', () => {
+      const losowa = madrosci[Math.floor(Math.random() * madrosci.length)];
+      madroscTekst.textContent = losowa;
     });
   </script>
-
 </body>
 </html>
