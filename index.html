@@ -531,45 +531,45 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script>
 const canvas = document.getElementById("starfield");
 const ctx = canvas.getContext("2d");
+
 let stars = [];
+let numStars = 150;
 
 function resizeCanvas() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 }
 resizeCanvas();
-window.onresize = resizeCanvas;
+window.addEventListener("resize", resizeCanvas);
 
-for (let i = 0; i < 200; i++) {
+for (let i = 0; i < numStars; i++) {
   stars.push({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
-    z: Math.random() * canvas.width
+    size: Math.random() * 2 + 1,
+    speed: Math.random() * 1 + 0.5
   });
 }
 
-function drawStars() {
-  ctx.fillStyle = "black";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = "white";
   for (let i = 0; i < stars.length; i++) {
-    let star = stars[i];
-    star.z -= 2;
-    if (star.z <= 0) {
-      star.x = Math.random() * canvas.width;
-      star.y = Math.random() * canvas.height;
-      star.z = canvas.width;
-    }
-    let k = 128.0 / star.z;
-    let x = star.x * k + canvas.width / 2;
-    let y = star.y * k + canvas.height / 2;
-    if (x >= 0 && x <= canvas.width && y >= 0 && y <= canvas.height) {
-      ctx.fillRect(x, y, 2, 2);
+    let s = stars[i];
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.size, 0, 2 * Math.PI);
+    ctx.fill();
+    s.x += s.speed;
+    s.y += s.speed;
+
+    if (s.x > canvas.width || s.y > canvas.height) {
+      s.x = Math.random() * -100;
+      s.y = Math.random() * -100;
     }
   }
-  requestAnimationFrame(drawStars);
+  requestAnimationFrame(draw);
 }
-drawStars();
+draw();
 </script>
 
 
