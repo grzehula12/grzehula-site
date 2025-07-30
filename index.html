@@ -248,10 +248,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </style>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7L4WD4T"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+<canvas id="starfield" style="position: fixed; top: 0; left: 0; z-index: -1;"></canvas>
+
   <header>
     <h1>Witam na Grzehula Store</h1>
   </header>
@@ -530,6 +528,49 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     setInterval(updateCountdown, 1000);
     updateCountdown();
   </script>
+<script>
+const canvas = document.getElementById("starfield");
+const ctx = canvas.getContext("2d");
+let stars = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.onresize = resizeCanvas;
+
+for (let i = 0; i < 200; i++) {
+  stars.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    z: Math.random() * canvas.width
+  });
+}
+
+function drawStars() {
+  ctx.fillStyle = "black";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "white";
+  for (let i = 0; i < stars.length; i++) {
+    let star = stars[i];
+    star.z -= 2;
+    if (star.z <= 0) {
+      star.x = Math.random() * canvas.width;
+      star.y = Math.random() * canvas.height;
+      star.z = canvas.width;
+    }
+    let k = 128.0 / star.z;
+    let x = star.x * k + canvas.width / 2;
+    let y = star.y * k + canvas.height / 2;
+    if (x >= 0 && x <= canvas.width && y >= 0 && y <= canvas.height) {
+      ctx.fillRect(x, y, 2, 2);
+    }
+  }
+  requestAnimationFrame(drawStars);
+}
+drawStars();
+</script>
 
 
 </body>
