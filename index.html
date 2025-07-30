@@ -546,9 +546,22 @@ window.addEventListener("resize", resizeCanvas);
 function createStars() {
   stars = [];
   for (let i = 0; i < numStars; i++) {
+    let edge = Math.random();
+    let x, y;
+
+    if (edge < 0.5) {
+      // start z góry
+      x = Math.random() * canvas.width;
+      y = Math.random() * -50;
+    } else {
+      // start z lewej
+      x = Math.random() * -50;
+      y = Math.random() * canvas.height;
+    }
+
     stars.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
+      x: x,
+      y: y,
       size: Math.random() * 2 + 1,
       speed: Math.random() * 1 + 0.3
     });
@@ -559,20 +572,29 @@ createStars();
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = "white";
+
   for (let i = 0; i < stars.length; i++) {
     let s = stars[i];
     ctx.beginPath();
     ctx.arc(s.x, s.y, s.size, 0, 2 * Math.PI);
     ctx.fill();
+
+    // ruch w prawo-dół
     s.x += s.speed;
     s.y += s.speed;
 
-    // jeśli gwiazdka wyjdzie poza ekran, resetuj ją do lewego górnego rogu
+    // gdy wyjdzie poza ekran – reset na górną lub lewą krawędź
     if (s.x > canvas.width || s.y > canvas.height) {
-      s.x = Math.random() * -50;
-      s.y = Math.random() * -50;
+      if (Math.random() < 0.5) {
+        s.x = Math.random() * canvas.width;
+        s.y = Math.random() * -50;
+      } else {
+        s.x = Math.random() * -50;
+        s.y = Math.random() * canvas.height;
+      }
     }
   }
+
   requestAnimationFrame(draw);
 }
 draw();
