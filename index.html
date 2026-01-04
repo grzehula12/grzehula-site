@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -456,6 +457,295 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </section>
    <p style="text-align: center; font-size: 12px; color: #777;">
   gra ktoś w fortnite? pisać DC: grzehula
+<footer>
+  <button id="openTest">Test Morse'a</button>
+</footer>
+
+<!-- Sekcja testu Morse'a, domyślnie ukryta -->
+<div id="testSection" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000; color:#0ff; z-index:2000; overflow:auto; padding:20px;">
+  <h1 style="text-align:center;">Test Morse'a</h1>
+  
+  <!-- Tutaj wklej swój kod testu Morse'a -->
+<div id="container" style="
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+">
+
+    <div id="target" style="font-size:42px; margin:5px 0;">?</div>
+    <div id="word" style="font-size:22px; letter-spacing:4px; margin:3px 0;"></div>
+    <div id="hint" style="font-family: monospace; color:#aaa; min-height:22px; margin:3px 0;"></div>
+
+    <!-- Rząd: tryb i podpowiedź -->
+    <div style="display:flex; gap:15px; align-items:center; margin:5px 0;">
+        <select id="mode" onchange="changeMode()" style="font-size:15px;">
+            <option value="letter">Litery</option>
+            <option value="word">Słowa</option>
+        </select>
+        <label style="font-size:15px;">
+            <input type="checkbox" id="hintToggle" onchange="updateHint()"> Podpowiedź
+        </label>
+    </div>
+
+    <!-- Rząd: głośność i powtórzenia -->
+    <div style="display:flex; gap:15px; align-items:center; margin:5px 0;">
+        <div>
+            Głośność:<br>
+            <input type="range" id="volume" min="0" max="1" step="0.01" value="0.3">
+        </div>
+        <div>
+            Powtórzenia:<br>
+            <input type="range" id="repeatSlider" min="1" max="10" value="3">
+            <span id="repeatCountDisplay">3</span>
+        </div>
+    </div>
+
+    <!-- Pole do klikania -->
+    <div id="pad" style="
+        width: 400px;
+        height: 200px;
+        background: #222;
+        border: 3px solid #555;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 32px;
+        font-weight: bold;
+        user-select: none;
+        cursor: pointer;
+        margin:10px 0;
+    ">
+        KLIKAJ TUTAJ
+    </div>
+
+    <div id="output" style="font-size:28px; min-height:40px; margin:5px 0;"></div>
+    <div id="repeatInfo" style="font-size:18px; margin:5px 0; color:#0f0;">Powtórzenie: 0 / 3</div>
+
+    <!-- Rząd przycisków -->
+    <div style="display:flex; gap:15px; margin:5px 0;">
+        <button onclick="resetInput()" style="font-size:15px;">Reset</button>
+        <button onclick="newItem()" style="font-size:15px;">Nowe</button>
+    </div>
+
+</div>
+
+<script>
+/* ================== PARAMETRY ================== */
+const DOT_MAX = 140;
+const DASH_MIN = 220;
+const REWARD_DURATION = 100;
+const REWARD_FREQ = 1000;
+
+/* ================== MORSE ================== */
+const morse = {
+ A:".-",B:"-...",C:"-.-.",D:"-..",E:".",F:"..-.",
+ G:"--.",H:"....",I:"..",J:".---",K:"-.-",L:".-..",
+ M:"--",N:"-.",O:"---",P:".--.",Q:"--.-",R:".-.",
+ S:"...",T:"-",U:"..-",V:"...-",W:".--",X:"-..-",
+ Y:"-.--",Z:"--.."
+};
+const words = ["ALA","KOT","RADIO","MORSE","HAM","SIGNAL","ANTENA","POLSKA"];
+
+/* ================== STAN ================== */
+let mode = "letter";
+let currentWord = "";
+let letterIndex = 0;
+let currentLetter = "";
+let input = "";
+let pressTime = 0;
+let repeatCounter = 0;
+let REPEAT_COUNT = 3;
+
+/* ================== AUDIO ================== */
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+let osc = null;
+let gain = audioCtx.createGain();
+gain.connect(audioCtx.destination);
+
+/* ================== DOM ================== */
+const target = document.getElementById("target");
+const wordDiv = document.getElementById("word");
+const hintDiv = document.getElementById("hint");
+const output = document.getElementById("output");
+const pad = document.getElementById("pad");
+const volumeSlider = document.getElementById("volume");
+const hintToggle = document.getElementById("hintToggle");
+const repeatSlider = document.getElementById("repeatSlider");
+const repeatCountDisplay = document.getElementById("repeatCountDisplay");
+const repeatInfo = document.getElementById("repeatInfo");
+
+volumeSlider.oninput = () => gain.gain.value = volumeSlider.value;
+repeatSlider.oninput = () => {
+    REPEAT_COUNT = parseInt(repeatSlider.value);
+    repeatCountDisplay.textContent = REPEAT_COUNT;
+    updateRepeatInfo();
+};
+
+/* ================== LOGIKA ================== */
+function randomLetter() {
+    const keys = Object.keys(morse);
+    return keys[Math.floor(Math.random() * keys.length)];
+}
+
+function changeMode() {
+    mode = document.getElementById("mode").value;
+    newItem();
+}
+
+function newItem() {
+    resetInput();
+    repeatCounter = 0;
+    if(mode==="letter"){
+        currentLetter = randomLetter();
+        target.textContent = currentLetter;
+        wordDiv.textContent = "";
+    } else {
+        currentWord = words[Math.floor(Math.random() * words.length)];
+        letterIndex = 0;
+        currentLetter = currentWord[0];
+        target.textContent = currentLetter;
+        wordDiv.textContent = currentWord;
+    }
+    updateHint();
+    updateRepeatInfo();
+}
+
+function resetInput() {
+    input = "";
+    output.textContent = "";
+    updateRepeatInfo();
+}
+
+function updateHint() {
+    if(!hintToggle.checked){
+        hintDiv.textContent="";
+        return;
+    }
+    if(mode==="letter"){
+        hintDiv.textContent=currentLetter+" = "+morse[currentLetter];
+    } else {
+        hintDiv.textContent=currentWord.split("").map(l=>l+":"+morse[l]).join("   ");
+    }
+}
+
+function updateRepeatInfo() {
+    if(mode==="letter"){
+        repeatInfo.textContent = `Powtórzenie: ${repeatCounter} / ${REPEAT_COUNT}`;
+    } else {
+        repeatInfo.textContent = "";
+    }
+}
+
+/* ================== AUDIO ================== */
+function startTone() {
+    if(audioCtx.state==="suspended") audioCtx.resume();
+    osc = audioCtx.createOscillator();
+    osc.frequency.value = 550;
+    osc.connect(gain);
+    osc.start();
+}
+
+function stopTone() {
+    if(osc){osc.stop(); osc.disconnect(); osc=null;}
+}
+
+function playRewardTone(){
+    const tone = audioCtx.createOscillator();
+    tone.frequency.value = REWARD_FREQ;
+    const g = audioCtx.createGain();
+    g.gain.value = volumeSlider.value;
+    tone.connect(g);
+    g.connect(audioCtx.destination);
+    tone.start();
+    tone.stop(audioCtx.currentTime + REWARD_DURATION/1000);
+}
+
+/* ================== INPUT ================== */
+pad.addEventListener("mousedown", () => {
+    pressTime = Date.now();
+    startTone();
+});
+
+pad.addEventListener("mouseup", () => {
+    stopTone();
+    const duration = Date.now() - pressTime;
+    let symbol = null;
+    if(duration <= DOT_MAX) symbol=".";
+    else if(duration >= DASH_MIN) symbol="-";
+    else return;
+
+    const correct = morse[currentLetter];
+    const test = input + symbol;
+
+    if(!correct.startsWith(test)){
+        resetInput();
+        return;
+    }
+
+    input = test;
+    output.textContent = input;
+
+    if(input === correct){
+        if(mode==="letter"){
+            setTimeout(()=>{
+                playRewardTone();
+                repeatCounter++;
+                updateRepeatInfo();
+
+                if(repeatCounter >= REPEAT_COUNT){
+                    repeatCounter = 0;
+                    nextStep();
+                } else {
+                    resetInput();
+                }
+            }, 300);
+        } else {
+            nextStep();
+        }
+    }
+});
+
+function nextStep(){
+    if(mode==="letter"){
+        newItem();
+        return;
+    }
+    letterIndex++;
+    if(letterIndex>=currentWord.length){
+        newItem();
+    } else {
+        currentLetter = currentWord[letterIndex];
+        target.textContent = currentLetter;
+        updateHint();
+    }
+}
+
+newItem();
+</script>
+  
+  <!-- Przycisk powrotu -->
+  <div style="text-align:center; margin-top:20px;">
+    <button id="closeTest" style="padding:10px 20px; background:#00bcd4; color:#000; border:none; border-radius:5px; cursor:pointer;">Powrót</button>
+  </div>
+</div>
+
+<script>
+  const openBtn = document.getElementById('openTest');
+  const closeBtn = document.getElementById('closeTest');
+  const testSection = document.getElementById('testSection');
+
+  openBtn.addEventListener('click', () => {
+    testSection.style.display = 'block';
+    window.scrollTo(0,0); // przewija na górę
+  });
+
+  closeBtn.addEventListener('click', () => {
+    testSection.style.display = 'none';
+  });
+</script>
 </p>
 <footer>
     © 2025 Grzehula Store. Wszystkie prawa zastrzeżone.
